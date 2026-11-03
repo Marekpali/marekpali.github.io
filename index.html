@@ -307,6 +307,23 @@
             margin-bottom: 8px;
         }
 
+        .product-figure {
+            margin: 2px 0;
+            background: #f9f8f6;
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .product-figure img { display: block; width: 100%; height: auto; }
+
+        .product-figure figcaption {
+            font-size: 12px;
+            color: #5f6368;
+            text-align: center;
+            margin-top: 6px;
+        }
+
         .origin { font-size: 14px; color: var(--color-text-secondary); font-style: italic; }
 
         /* Principles */
@@ -435,6 +452,10 @@
                             <span class="status status-live" data-i18n="tcStatus">Online</span>
                         </div>
                         <p data-i18n="tcDesc">Zamienia wiele godzin rozmów ekspertów w jasne, uporządkowane odpowiedzi. Pokazuje, w czym eksperci się zgadzają, gdzie się różnią i co dopiero się wyłania.</p>
+                        <figure class="product-figure">
+                            <img src="toclarity-foundations.jpg" width="718" height="410" loading="lazy" alt="Piramida toClarity: u góry długie i zdrowe życie, pośrodku monitorowanie sygnałów zdrowia, u podstawy pięć fundamentów: odżywianie, aktywność fizyczna, sen, stres i zdrowie psychiczne, środowisko" data-i18n-alt="tcFigAlt">
+                            <figcaption data-i18n="tcFigCap">Pięć fundamentów zdrowia, które regularnie wracają w rozmowach ekspertów</figcaption>
+                        </figure>
                         <ul>
                             <li data-i18n="tcB1">Synteza wypowiedzi ponad 100 ekspertów zdrowia</li>
                             <li data-i18n="tcB2">Pięć fundamentów zdrowia: odżywianie, aktywność fizyczna, sen, stres i zdrowie psychiczne, środowisko</li>
@@ -577,6 +598,8 @@
                 tcKicker: "Making sense of health information",
                 tcStatus: "Live",
                 tcDesc: "Turns hours of expert discussions into clear, structured answers. Shows where experts agree, where they disagree and what is still emerging.",
+                tcFigCap: "Five health foundations that keep coming back in expert discussions",
+                tcFigAlt: "toClarity pyramid: long-term health at the top, monitoring of health signals in the middle, and five foundations at the base: nutrition, physical activity, sleep, stress and mental health, environment",
                 tcB1: "Structured synthesis across 100+ health voices",
                 tcB2: "Five health foundations: nutrition, physical activity, sleep, stress and mental health, environment",
                 tcB3: "Linked to body systems, health conditions and healthy ageing",
@@ -638,12 +661,19 @@
         document.querySelectorAll('[data-i18n]').forEach(el => {
             content.pl[el.dataset.i18n] = el.innerHTML;
         });
+        document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+            content.pl[el.dataset.i18nAlt] = el.alt;
+        });
 
         function setLang(lang) {
             const c = content[lang] || content.pl;
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const value = c[el.dataset.i18n];
                 if (value !== undefined) el.innerHTML = value; // static, author-controlled strings only
+            });
+            document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+                const value = c[el.dataset.i18nAlt];
+                if (value !== undefined) el.alt = value;
             });
             document.documentElement.lang = lang;
             document.querySelectorAll('.lang-btn').forEach(btn => {
