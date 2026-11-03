@@ -419,6 +419,19 @@
         .ex-tile .val { font-size: 26px; font-weight: 700; line-height: 1.2; margin: 4px 0; }
         .ex-tile .val small { font-size: 13px; font-weight: 500; }
         .ex-tile .sub { font-size: 12px; color: var(--color-text-secondary); }
+        .ex-usage { grid-column: 1 / -1; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 10px; padding: 14px 16px; display: grid; gap: 10px; }
+        .ex-usage-top { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+        .seg { display: inline-flex; flex-wrap: wrap; gap: 4px; background: var(--color-light-bg); border: 1px solid var(--color-border); border-radius: 8px; padding: 3px; }
+        .seg button { font: inherit; font-size: 12px; border: 0; background: transparent; color: var(--color-text-secondary); padding: 5px 10px; border-radius: 6px; cursor: pointer; }
+        .seg button[aria-pressed="true"] { background: var(--color-bg); color: var(--color-text); font-weight: 600; box-shadow: 0 0 0 1px var(--color-border); }
+        .seg button:disabled { opacity: 0.45; cursor: not-allowed; }
+        .ex-usage-sum { font-size: 14px; }
+        .ex-usage-sum strong { font-size: 18px; }
+        .ex-usage-src { font-size: 12px; color: var(--color-text-secondary); }
+        .ex-usage-src .chip { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; margin-right: 6px; }
+        .ex-legend { display: flex; gap: 14px; font-size: 12px; color: var(--color-text-secondary); }
+        .ex-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+
         .ex-chart { grid-column: span 2; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 10px; padding: 14px 16px; display: grid; gap: 10px; align-content: start; }
         .ex-insights { display: grid; gap: 10px; align-content: start; }
         .ex-chart-title { font-size: 13px; font-weight: 600; }
@@ -652,6 +665,16 @@
                         <div class="ex-tile" style="--tile:#c27c0e"><div class="lbl" data-i18n="exL1">Prąd</div><div class="val">640 <small>kWh</small></div><div class="sub" data-i18n="exS1">pobór we wrześniu · −38% r/r</div></div>
                         <div class="ex-tile" style="--tile:#a8475f"><div class="lbl" data-i18n="exL2">Gaz</div><div class="val">0 <small>m³</small></div><div class="sub" data-i18n="exS2">ostatni okres · same opłaty stałe</div></div>
                         <div class="ex-tile" style="--tile:#0e7fa6"><div class="lbl" data-i18n="exL3">Woda i ścieki</div><div class="val">560 <small data-i18n="exU3">l / dzień</small></div><div class="sub" data-i18n="exS3">−12% wobec poprzedniego okresu</div></div>
+                        <div class="ex-usage" id="ex-usage">
+                            <div class="ex-usage-top">
+                                <div class="seg" role="group" aria-label="Medium" id="ex-medium"></div>
+                                <div class="seg" role="group" aria-label="Okres" id="ex-period"></div>
+                            </div>
+                            <p class="ex-usage-sum" id="ex-sum" aria-live="polite"></p>
+                            <svg viewBox="0 0 640 170" class="ex-svg" id="ex-usage-svg" role="img" aria-label=""></svg>
+                            <div class="ex-legend" id="ex-legend"></div>
+                            <p class="ex-usage-src" id="ex-src"></p>
+                        </div>
                         <div class="ex-chart">
                             <p class="ex-chart-title" data-i18n="exCT">Koszt dzienny w ostatnich 12 miesiącach (zł / dzień)</p>
                             <div class="ex-series"><div class="ex-series-head"><span class="dot" style="background:#c27c0e"></span><span data-i18n="exC1">Prąd</span><span class="src" data-i18n="exC1s">model taryfy</span></div><svg viewBox="0 0 360 80" role="img" aria-hidden="true" class="ex-svg"><defs><pattern id="hc27c0e" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="#c27c0e" opacity="0.35"/><line x1="0" y1="0" x2="0" y2="5" stroke="#c27c0e" stroke-width="2.2"/></pattern></defs><line x1="26" y1="64.0" x2="360" y2="64.0" class="grid"/><text x="22" y="67.0" text-anchor="end" class="ax">0</text><line x1="26" y1="34.0" x2="360" y2="34.0" class="grid"/><text x="22" y="37.0" text-anchor="end" class="ax">50</text><line x1="26" y1="4.0" x2="360" y2="4.0" class="grid"/><text x="22" y="7.0" text-anchor="end" class="ax">100</text><rect x="27.5" y="20.8" width="24.8" height="43.2" rx="1.5" fill="url(#hc27c0e)"/><rect x="55.3" y="17.2" width="24.8" height="46.8" rx="1.5" fill="url(#hc27c0e)"/><rect x="83.2" y="7.0" width="24.8" height="57.0" rx="1.5" fill="url(#hc27c0e)"/><rect x="111.0" y="18.4" width="24.8" height="45.6" rx="1.5" fill="url(#hc27c0e)"/><rect x="138.8" y="32.8" width="24.8" height="31.2" rx="1.5" fill="url(#hc27c0e)"/><rect x="166.7" y="37.6" width="24.8" height="26.4" rx="1.5" fill="url(#hc27c0e)"/><rect x="194.5" y="52.0" width="24.8" height="12.0" rx="1.5" fill="url(#hc27c0e)"/><rect x="222.3" y="58.6" width="24.8" height="5.4" rx="1.5" fill="url(#hc27c0e)"/><rect x="250.2" y="59.2" width="24.8" height="4.8" rx="1.5" fill="url(#hc27c0e)"/><rect x="278.0" y="59.2" width="24.8" height="4.8" rx="1.5" fill="url(#hc27c0e)"/><rect x="305.8" y="58.6" width="24.8" height="5.4" rx="1.5" fill="url(#hc27c0e)"/><rect x="333.7" y="55.0" width="24.8" height="9.0" rx="1.5" fill="url(#hc27c0e)"/><text x="39.9" y="77" text-anchor="middle" class="ax">XI</text><text x="95.6" y="77" text-anchor="middle" class="ax">I</text><text x="151.2" y="77" text-anchor="middle" class="ax">III</text><text x="206.9" y="77" text-anchor="middle" class="ax">V</text><text x="262.6" y="77" text-anchor="middle" class="ax">VII</text><text x="318.2" y="77" text-anchor="middle" class="ax">IX</text></svg></div><div class="ex-series"><div class="ex-series-head"><span class="dot" style="background:#a8475f"></span><span data-i18n="exC2">Gaz</span><span class="src" data-i18n="exC2s">z faktur</span></div><svg viewBox="0 0 360 80" role="img" aria-hidden="true" class="ex-svg"><line x1="26" y1="64.0" x2="360" y2="64.0" class="grid"/><text x="22" y="67.0" text-anchor="end" class="ax">0</text><line x1="26" y1="34.0" x2="360" y2="34.0" class="grid"/><text x="22" y="37.0" text-anchor="end" class="ax">10</text><line x1="26" y1="4.0" x2="360" y2="4.0" class="grid"/><text x="22" y="7.0" text-anchor="end" class="ax">20</text><rect x="27.5" y="55.0" width="24.8" height="9.0" rx="1.5" fill="#a8475f"/><rect x="55.3" y="55.0" width="24.8" height="9.0" rx="1.5" fill="#a8475f"/><rect x="83.2" y="19.0" width="24.8" height="45.0" rx="1.5" fill="#a8475f"/><rect x="111.0" y="61.0" width="24.8" height="3.0" rx="1.5" fill="#a8475f"/><rect x="138.8" y="61.0" width="24.8" height="3.0" rx="1.5" fill="#a8475f"/><rect x="166.7" y="62.2" width="24.8" height="1.8" rx="1.5" fill="#a8475f"/><rect x="194.5" y="60.4" width="24.8" height="3.6" rx="1.5" fill="#a8475f"/><rect x="222.3" y="62.2" width="24.8" height="1.8" rx="1.5" fill="#a8475f"/><rect x="250.2" y="62.2" width="24.8" height="1.8" rx="1.5" fill="#a8475f"/><rect x="278.0" y="62.2" width="24.8" height="1.8" rx="1.5" fill="#a8475f"/><rect x="305.8" y="62.2" width="24.8" height="1.8" rx="1.5" fill="#a8475f"/><rect x="333.7" y="62.2" width="24.8" height="1.8" rx="1.5" fill="#a8475f"/><text x="39.9" y="77" text-anchor="middle" class="ax">XI</text><text x="95.6" y="77" text-anchor="middle" class="ax">I</text><text x="151.2" y="77" text-anchor="middle" class="ax">III</text><text x="206.9" y="77" text-anchor="middle" class="ax">V</text><text x="262.6" y="77" text-anchor="middle" class="ax">VII</text><text x="318.2" y="77" text-anchor="middle" class="ax">IX</text></svg></div><div class="ex-series"><div class="ex-series-head"><span class="dot" style="background:#0e7fa6"></span><span data-i18n="exC3">Woda i ścieki</span><span class="src" data-i18n="exC3s">z faktur</span></div><svg viewBox="0 0 360 80" role="img" aria-hidden="true" class="ex-svg"><line x1="26" y1="64.0" x2="360" y2="64.0" class="grid"/><text x="22" y="67.0" text-anchor="end" class="ax">0</text><line x1="26" y1="34.0" x2="360" y2="34.0" class="grid"/><text x="22" y="37.0" text-anchor="end" class="ax">10</text><line x1="26" y1="4.0" x2="360" y2="4.0" class="grid"/><text x="22" y="7.0" text-anchor="end" class="ax">20</text><rect x="27.5" y="37.0" width="24.8" height="27.0" rx="1.5" fill="#0e7fa6"/><rect x="55.3" y="37.0" width="24.8" height="27.0" rx="1.5" fill="#0e7fa6"/><rect x="83.2" y="31.0" width="24.8" height="33.0" rx="1.5" fill="#0e7fa6"/><rect x="111.0" y="31.0" width="24.8" height="33.0" rx="1.5" fill="#0e7fa6"/><rect x="138.8" y="28.0" width="24.8" height="36.0" rx="1.5" fill="#0e7fa6"/><rect x="166.7" y="28.0" width="24.8" height="36.0" rx="1.5" fill="#0e7fa6"/><rect x="194.5" y="22.0" width="24.8" height="42.0" rx="1.5" fill="#0e7fa6"/><rect x="222.3" y="22.0" width="24.8" height="42.0" rx="1.5" fill="#0e7fa6"/><rect x="250.2" y="40.0" width="24.8" height="24.0" rx="1.5" fill="#0e7fa6"/><rect x="278.0" y="40.0" width="24.8" height="24.0" rx="1.5" fill="#0e7fa6"/><rect x="305.8" y="31.0" width="24.8" height="33.0" rx="1.5" fill="#0e7fa6"/><rect x="333.7" y="31.0" width="24.8" height="33.0" rx="1.5" fill="#0e7fa6"/><text x="39.9" y="77" text-anchor="middle" class="ax">XI</text><text x="95.6" y="77" text-anchor="middle" class="ax">I</text><text x="151.2" y="77" text-anchor="middle" class="ax">III</text><text x="206.9" y="77" text-anchor="middle" class="ax">V</text><text x="262.6" y="77" text-anchor="middle" class="ax">VII</text><text x="318.2" y="77" text-anchor="middle" class="ax">IX</text></svg></div>
@@ -871,6 +894,7 @@
                 btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
             });
             try { localStorage.setItem('lang', lang); } catch (e) {}
+            window.dispatchEvent(new Event('langchange'));
         }
 
         document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -880,6 +904,115 @@
         let saved = null;
         try { saved = localStorage.getItem('lang'); } catch (e) {}
         if (saved === 'en') setLang('en');
+
+        // Usage explorer for the home costs example. Sample data only.
+        (function () {
+            const T = {
+                pl: { media: { el: 'Prąd', gas: 'Gaz', water: 'Woda' },
+                      periods: { day: 'Dzień', week: 'Tydzień', month: 'Miesiąc', prev: 'Poprzedni miesiąc', yoy: 'Rok do roku' },
+                      unit: { el: 'kWh', gas: 'm³', water: 'm³' },
+                      cur: 'bieżący', prevL: 'poprzedni', thisY: 'ten rok', lastY: 'poprzedni rok',
+                      measured: 'pomiar', invoice: 'faktura',
+                      srcEl: 'Pomiar co godzinę z licznika w domu. Po rozliczeniu porównywany z fakturą operatora; rozbieżność jest pokazywana, nie ukrywana.',
+                      srcInv: 'Dane z faktur, za okresy rozliczeniowe, bez pomiaru godzinowego. Krótsze widoki są niedostępne zamiast zgadywane.',
+                      noData: 'Brak danych o tej rozdzielczości: dane tylko z faktur, za okresy rozliczeniowe.',
+                      sumDay: (v, d) => `Wczoraj: <strong>${v}</strong>, ${d} wobec średniej z tygodnia`,
+                      sumWeek: (v, d) => `Ostatnie 7 dni: <strong>${v}</strong>, ${d} wobec tygodnia wcześniej`,
+                      sumMonth: (v, d) => `Bieżący miesiąc: <strong>${v}</strong>, ${d} wobec poprzedniego`,
+                      sumPrev: (v, w) => `Poprzedni miesiąc: <strong>${v}</strong> (bieżący: ${w})`,
+                      sumYoy: (v, d) => `Ostatnie 12 miesięcy: <strong>${v}</strong>, ${d} rok do roku`,
+                      less: 'mniej', more: 'więcej', weeks: ['tydz. 1', 'tydz. 2', 'tydz. 3', 'tydz. 4'],
+                      days: ['pn', 'wt', 'śr', 'cz', 'pt', 'sb', 'nd'], months: ['XI','XII','I','II','III','IV','V','VI','VII','VIII','IX','X'] },
+                en: { media: { el: 'Electricity', gas: 'Gas', water: 'Water' },
+                      periods: { day: 'Day', week: 'Week', month: 'Month', prev: 'Previous month', yoy: 'Year on year' },
+                      unit: { el: 'kWh', gas: 'm³', water: 'm³' },
+                      cur: 'current', prevL: 'previous', thisY: 'this year', lastY: 'last year',
+                      measured: 'measured', invoice: 'invoice',
+                      srcEl: 'Hourly readings from the meter at home. After billing they are compared with the supplier invoice; any difference is shown, not hidden.',
+                      srcInv: 'Invoice data by billing period, no hourly readings. Shorter views are unavailable rather than guessed.',
+                      noData: 'No data at this resolution: invoices only, by billing period.',
+                      sumDay: (v, d) => `Yesterday: <strong>${v}</strong>, ${d} than the weekly average`,
+                      sumWeek: (v, d) => `Last 7 days: <strong>${v}</strong>, ${d} than the week before`,
+                      sumMonth: (v, d) => `This month: <strong>${v}</strong>, ${d} than last month`,
+                      sumPrev: (v, w) => `Previous month: <strong>${v}</strong> (this month: ${w})`,
+                      sumYoy: (v, d) => `Last 12 months: <strong>${v}</strong>, ${d} year on year`,
+                      less: 'less', more: 'more', weeks: ['wk 1', 'wk 2', 'wk 3', 'wk 4'],
+                      days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], months: ['XI','XII','I','II','III','IV','V','VI','VII','VIII','IX','X'] }
+            };
+            const COL = { el: '#c27c0e', gas: '#a8475f', water: '#0e7fa6' };
+            const D = {
+                el: {
+                    day: [0.9,0.8,0.8,0.7,0.8,1.0,1.6,1.9,1.4,1.1,0.9,0.8,0.9,0.8,0.9,1.2,1.7,2.3,2.6,2.2,1.8,1.5,1.2,1.0],
+                    weekAvg: 32.2,
+                    week: [31.5,33.2,30.8,29.9,32.6,36.4,30.8], weekPrev: 238.0,
+                    month: [[218,226,221,225],[236,241,233,245]],
+                    yoy: [[1180,1420,1560,1380,1050,800,520,430,410,420,640,985],[1300,1560,1700,1520,1180,900,600,520,560,620,1030,1060]]
+                },
+                gas: { yoy: [[14,40,95,30,8,4,2,1,0,0,0,0],[20,55,110,60,25,10,5,2,1,1,1,8]] },
+                water: { yoy: [[14,14,15,15,16,16,18,18,13,13,15,15],[15,15,16,16,17,18,20,20,15,15,16,16]] }
+            };
+            let medium = 'el', period = 'week';
+            const svg = document.getElementById('ex-usage-svg');
+            if (!svg) return;
+            const lang = () => (document.documentElement.lang === 'en' ? 'en' : 'pl');
+            const sum = a => a.reduce((x, y) => x + y, 0);
+            const fmt = (v, u) => `${(Math.round(v * 10) / 10).toLocaleString(lang() === 'pl' ? 'pl-PL' : 'en-GB')} ${u}`;
+            const pct = (a, b, t) => { const d = Math.round((a - b) / b * 100); return `${Math.abs(d)}% ${d < 0 ? t.less : t.more}`; };
+            const avail = m => m === 'el' ? ['day','week','month','prev','yoy'] : ['yoy'];
+
+            function bars(groups, labels, colors, hatchSecond) {
+                const W = Math.max(300, Math.round(svg.getBoundingClientRect().width) || 640), H = W < 500 ? 150 : 140, L = 34, n = labels.length, k = groups.length;
+                svg.setAttribute('viewBox', `0 0 ${W} ${H + 22}`);
+                const mx = Math.max(...groups.flat()) * 1.1, bw = (W - L) / n;
+                let o = `<defs><pattern id="exh" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="${colors[1] || colors[0]}" opacity="0.25"/><line x1="0" y1="0" x2="0" y2="5" stroke="${colors[1] || colors[0]}" stroke-width="2"/></pattern></defs>`;
+                [0, 0.5, 1].forEach(f => { const y = H - f * (H - 8); o += `<line x1="${L}" y1="${y}" x2="${W}" y2="${y}" class="grid"/><text x="${L - 5}" y="${y + 3}" text-anchor="end" class="ax">${mx < 10 ? (Math.round(mx * f * 10) / 10) : Math.round(mx * f)}</text>`; });
+                const step = n > 12 ? 3 : (W < 500 && n > 7 ? 2 : 1);
+                labels.forEach((lb, i) => {
+                    const gw = (bw - 4) / k;
+                    groups.forEach((g, j) => {
+                        const h = Math.max(1.2, g[i] / mx * (H - 8)), x = L + i * bw + 2 + j * gw;
+                        const fill = (hatchSecond && j === 1) ? 'url(#exh)' : colors[j];
+                        o += `<rect x="${x.toFixed(1)}" y="${(H - h).toFixed(1)}" width="${Math.max(1, gw - 1.5).toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${fill}"/>`;
+                    });
+                    if (i % step === 0) o += `<text x="${(L + i * bw + bw / 2).toFixed(1)}" y="${H + 16}" text-anchor="middle" class="ax">${lb}</text>`;
+                });
+                svg.innerHTML = o;
+            }
+
+            function render() {
+                const t = T[lang()], c = COL[medium], u = t.unit[medium], d = D[medium];
+                const mk = (el, items, cur, set) => {
+                    el.innerHTML = '';
+                    items.forEach(([key, label, enabled]) => {
+                        const b = document.createElement('button');
+                        b.type = 'button'; b.textContent = label;
+                        b.setAttribute('aria-pressed', String(key === cur));
+                        if (!enabled) { b.disabled = true; b.title = t.noData; }
+                        b.addEventListener('click', () => { set(key); render(); });
+                        el.appendChild(b);
+                    });
+                };
+                if (!avail(medium).includes(period)) period = 'yoy';
+                mk(document.getElementById('ex-medium'), Object.keys(t.media).map(k => [k, t.media[k], true]), medium, v => { medium = v; });
+                mk(document.getElementById('ex-period'), Object.keys(t.periods).map(k => [k, t.periods[k], avail(medium).includes(k)]), period, v => { period = v; });
+                const legend = document.getElementById('ex-legend'), S = document.getElementById('ex-sum');
+                let lg = '';
+                if (period === 'day') { bars([d.day], d.day.map((_, i) => i), [c]); S.innerHTML = t.sumDay(fmt(sum(d.day), u), pct(sum(d.day), d.weekAvg, t)); }
+                if (period === 'week') { bars([d.week], t.days, [c]); S.innerHTML = t.sumWeek(fmt(sum(d.week), u), pct(sum(d.week), d.weekPrev, t)); }
+                if (period === 'month') { bars([d.month[0]], t.weeks, [c]); S.innerHTML = t.sumMonth(fmt(sum(d.month[0]), u), pct(sum(d.month[0]), sum(d.month[1]), t)); }
+                if (period === 'prev') { bars([d.month[0], d.month[1]], t.weeks, [c, c], true); S.innerHTML = t.sumPrev(fmt(sum(d.month[1]), u), fmt(sum(d.month[0]), u)); lg = `<span><i style="background:${c}"></i>${t.cur}</span><span><i style="background:${c};opacity:.45"></i>${t.prevL}</span>`; }
+                if (period === 'yoy') { bars([d.yoy[0], d.yoy[1]], t.months, [c, c], true); S.innerHTML = t.sumYoy(fmt(sum(d.yoy[0]), u), pct(sum(d.yoy[0]), sum(d.yoy[1]), t)); lg = `<span><i style="background:${c}"></i>${t.thisY}</span><span><i style="background:${c};opacity:.45"></i>${t.lastY}</span>`; }
+                legend.innerHTML = lg;
+                const chip = medium === 'el'
+                    ? `<span class="chip status-live">${t.measured}</span>${t.srcEl}`
+                    : `<span class="chip status-proto">${t.invoice}</span>${t.srcInv}`;
+                document.getElementById('ex-src').innerHTML = chip;
+                svg.setAttribute('aria-label', `${t.media[medium]}, ${t.periods[period]}`);
+            }
+            render();
+            window.addEventListener('langchange', render);
+            let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(render, 150); });
+        })();
     </script>
 </body>
 </html>
