@@ -4,143 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marek Palichleb | Senior Business Analyst</title>
+    <meta name="description" content="Senior Business Analyst. Buduję systemy, w których dane są wiarygodne, a decyzje możliwe do sprawdzenia: toClarity i Cognitive Core.">
+    <meta property="og:title" content="Marek Palichleb | Senior Business Analyst">
+    <meta property="og:description" content="Systemy, dane i AI z jawnym pochodzeniem wyników. toClarity i Cognitive Core.">
+    <meta property="og:image" content="profile.jpg">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --color-bg: #ffffff;
             --color-text: #1a1a1a;
-            --color-text-secondary: #666666;
-            --color-border: #e8e8e8;
+            --color-text-secondary: #5f6368;
+            --color-border: #e6e6e6;
             --color-accent: #2c3e50;
-            --color-light-bg: #f8f9fa;
+            --color-accent-text: #ffffff;
+            --color-light-bg: #f6f7f9;
+            --color-live: #1e7d4f;
+            --color-live-bg: #e7f4ed;
+            --color-build: #8a5a00;
+            --color-build-bg: #fbf1dc;
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
                 --color-bg: #0f0f0f;
-                --color-text: #ffffff;
-                --color-text-secondary: #cccccc;
-                --color-border: #333333;
+                --color-text: #f2f2f2;
+                --color-text-secondary: #b8b8b8;
+                --color-border: #2e2e2e;
                 --color-accent: #a0c7ff;
-                --color-light-bg: #1a1a1a;
+                --color-accent-text: #0f0f0f;
+                --color-light-bg: #181818;
+                --color-live: #7fd6a8;
+                --color-live-bg: #12291d;
+                --color-build: #f0c36b;
+                --color-build-bg: #2b2210;
             }
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background: var(--color-bg);
             color: var(--color-text);
             line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        a { color: inherit; }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .container { max-width: 920px; margin: 0 auto; padding: 0 24px; }
 
+        /* Header */
         header {
-            padding: 80px 0 60px;
+            padding: 72px 0 56px;
             border-bottom: 1px solid var(--color-border);
             position: relative;
-        }
-
-        .header-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
-        }
-
-        .header-text h1 {
-            font-size: 36px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-        }
-
-        .header-text .tagline {
-            font-size: 16px;
-            color: var(--color-text-secondary);
-            margin-bottom: 24px;
-            font-weight: 400;
-        }
-
-        .meta {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            font-size: 14px;
-            color: var(--color-text-secondary);
-            margin-bottom: 32px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border: 1px solid var(--color-border);
-            background: transparent;
-            color: var(--color-text);
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn:hover {
-            border-color: var(--color-accent);
-            color: var(--color-accent);
-            background: var(--color-light-bg);
-        }
-
-        .btn-primary {
-            background: var(--color-accent);
-            color: white;
-            border-color: var(--color-accent);
-        }
-
-        .btn-primary:hover {
-            opacity: 0.9;
-            background: var(--color-accent);
-        }
-
-        .profile-image {
-            width: 100%;
-            max-width: 350px;
-            aspect-ratio: 1;
-            border-radius: 12px;
-            object-fit: cover;
-            background: var(--color-light-bg);
-            border: 1px solid var(--color-border);
         }
 
         .lang-toggle {
             position: absolute;
             top: 20px;
-            right: 24px;
+            right: 0;
             display: flex;
-            gap: 12px;
+            gap: 10px;
             font-size: 13px;
+            color: var(--color-text-secondary);
         }
 
         .lang-btn {
@@ -148,40 +76,108 @@
             border: none;
             color: var(--color-text-secondary);
             cursor: pointer;
-            font-weight: 400;
-            padding: 0;
+            font: inherit;
+            padding: 2px 0;
             text-decoration: underline;
-            transition: color 0.3s;
         }
 
-        .lang-btn.active {
+        .lang-btn[aria-pressed="true"] {
             color: var(--color-accent);
             text-decoration: none;
+            font-weight: 600;
+        }
+
+        .header-content {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 38px;
+            font-weight: 650;
+            letter-spacing: -0.6px;
+            line-height: 1.15;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 17px;
+            color: var(--color-text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .lead {
+            font-size: 16px;
+            margin-bottom: 24px;
+            max-width: 520px;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-bottom: 28px;
+        }
+
+        .cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+
+        .btn {
+            padding: 11px 20px;
+            border: 1px solid var(--color-border);
+            background: transparent;
+            color: var(--color-text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
             font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: border-color 0.2s, color 0.2s, background 0.2s;
         }
 
-        main {
-            padding: 80px 0;
+        .btn:hover, .btn:focus-visible {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background: var(--color-light-bg);
         }
 
-        section {
-            margin-bottom: 100px;
+        .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-accent-text);
+            border-color: var(--color-accent);
         }
+
+        .btn-primary:hover, .btn-primary:focus-visible {
+            background: var(--color-accent);
+            color: var(--color-accent-text);
+            opacity: 0.9;
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 340px;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            object-fit: cover;
+            background: var(--color-light-bg);
+            border: 1px solid var(--color-border);
+            justify-self: end;
+        }
+
+        /* Sections */
+        main { padding: 72px 0 24px; }
+        section { margin-bottom: 88px; }
 
         .section-header {
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-bottom: 32px;
-        }
-
-        .section-header h2 {
-            font-size: 20px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 13px;
-            color: var(--color-text-secondary);
+            margin-bottom: 28px;
         }
 
         .section-header::before {
@@ -191,46 +187,158 @@
             background: var(--color-border);
         }
 
-        .about-text {
-            font-size: 16px;
-            line-height: 1.8;
-            max-width: 720px;
-            color: var(--color-text);
+        .section-header h2 {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-text-secondary);
         }
 
-        .work-grid {
-            display: grid;
-            gap: 48px;
+        .section-intro {
+            font-size: 16px;
+            max-width: 720px;
+            margin-bottom: 32px;
         }
+
+        .about-text { font-size: 16px; line-height: 1.8; max-width: 720px; }
+
+        /* Products */
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .product {
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            background: var(--color-bg);
+        }
+
+        .product-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .product h3 { font-size: 20px; font-weight: 650; letter-spacing: -0.2px; }
+
+        .product .kicker { font-size: 14px; color: var(--color-text-secondary); }
+
+        .status {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .status-live { color: var(--color-live); background: var(--color-live-bg); }
+        .status-build { color: var(--color-build); background: var(--color-build-bg); }
+
+        .product p { font-size: 15px; }
+
+        .product ul {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .product li { padding-left: 18px; position: relative; }
+
+        .product li::before {
+            content: "";
+            position: absolute;
+            left: 2px;
+            top: 9px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--color-accent);
+        }
+
+        .facts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .fact {
+            background: var(--color-light-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 10px 12px;
+        }
+
+        .fact strong { display: block; font-size: 16px; font-weight: 650; }
+        .fact span { font-size: 12px; color: var(--color-text-secondary); line-height: 1.4; display: block; }
+
+        .product-footer {
+            margin-top: auto;
+            padding-top: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .note { font-size: 12px; color: var(--color-text-secondary); }
+
+        .soon {
+            border-top: 1px dashed var(--color-border);
+            padding-top: 14px;
+        }
+
+        .soon-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--color-text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .origin { font-size: 14px; color: var(--color-text-secondary); font-style: italic; }
+
+        /* Principles */
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px 40px;
+        }
+
+        .principle h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+        .principle p { font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; }
+
+        /* Work */
+        .work-grid { display: grid; gap: 40px; }
 
         .work-card {
             border-left: 2px solid var(--color-border);
             padding-left: 24px;
-            transition: border-color 0.3s;
+            transition: border-color 0.2s;
         }
 
-        .work-card:hover {
-            border-color: var(--color-accent);
-        }
-
-        .work-card h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
+        .work-card:hover { border-color: var(--color-accent); }
+        .work-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
 
         .work-desc {
             font-size: 14px;
             color: var(--color-text-secondary);
             line-height: 1.7;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
-        .tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
+        .tags { display: flex; gap: 8px; flex-wrap: wrap; }
 
         .tag {
             font-size: 12px;
@@ -241,331 +349,316 @@
             border: 1px solid var(--color-border);
         }
 
-        .collab-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-        }
-
-        .collab-item h3 {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .collab-item p {
-            font-size: 14px;
-            color: var(--color-text-secondary);
-            line-height: 1.8;
-        }
+        .collab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .collab-item h3 { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+        .collab-item p { font-size: 14px; color: var(--color-text-secondary); line-height: 1.8; }
 
         footer {
             border-top: 1px solid var(--color-border);
-            padding: 60px 0;
+            padding: 48px 0;
             text-align: center;
             font-size: 12px;
             color: var(--color-text-secondary);
         }
 
+        @media (max-width: 800px) {
+            .product-grid { grid-template-columns: 1fr; }
+        }
+
         @media (max-width: 768px) {
-            .header-content {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .header-text h1 {
-                font-size: 28px;
-            }
-
-            .profile-image {
-                max-width: 250px;
-            }
-
-            .collab-grid {
-                grid-template-columns: 1fr;
-            }
-
-            header {
-                padding: 60px 0 40px;
-            }
-
-            main {
-                padding: 60px 0;
-            }
-
-            .lang-toggle {
-                position: static;
-                margin-bottom: 24px;
-            }
+            .header-content { grid-template-columns: 1fr; gap: 28px; }
+            .profile-image { max-width: 220px; justify-self: start; order: -1; }
+            h1 { font-size: 30px; }
+            .collab-grid, .principles { grid-template-columns: 1fr; }
+            header { padding: 56px 0 40px; }
+            main { padding: 56px 0 16px; }
+            section { margin-bottom: 64px; }
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
-            }
+            .container { padding: 0 16px; }
+            .lang-toggle { top: 16px; }
+            h1 { font-size: 26px; }
+            .tagline { font-size: 15px; }
+            .product { padding: 22px; }
+            .facts { grid-template-columns: 1fr 1fr; }
+            .cta-buttons { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+        }
 
-            header {
-                padding: 40px 0 30px;
-            }
-
-            .header-text h1 {
-                font-size: 24px;
-            }
-
-            .header-text .tagline {
-                font-size: 14px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            main {
-                padding: 40px 0;
-            }
-
-            section {
-                margin-bottom: 60px;
-            }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            * { transition: none !important; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="lang-toggle">
-                <button class="lang-btn active" onclick="switchLang('pl')">PL</button>
-                <span>/</span>
-                <button class="lang-btn" onclick="switchLang('en')">EN</button>
+            <div class="lang-toggle" role="group" aria-label="Język / Language">
+                <button class="lang-btn" type="button" data-lang="pl" aria-pressed="true">PL</button>
+                <span aria-hidden="true">/</span>
+                <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
             </div>
 
             <div class="header-content">
-                <div class="header-text">
-                    <h1 id="name">Marek Palichleb</h1>
-                    <p class="tagline" id="tagline">Senior Business Analyst | Bridge between business & IT</p>
+                <div>
+                    <h1>Marek Palichleb</h1>
+                    <p class="tagline" data-i18n="tagline">Senior Business Analyst | Most między biznesem a IT</p>
+                    <p class="lead" data-i18n="lead">Buduję systemy, w których dane są wiarygodne, a każdy wynik da się sprawdzić. Dziś rozwijam dwa własne produkty: toClarity i Cognitive Core.</p>
                     <div class="meta">
-                        <span id="location">EU-based</span>
-                        <span id="status">Available for projects</span>
+                        <span data-i18n="location">Polska, praca w całej UE</span>
+                        <span data-i18n="status">Dostępny do projektów</span>
                     </div>
                     <div class="cta-buttons">
-                        <a href="https://linkedin.com/in/palichlebm/" target="_blank" class="btn btn-primary" id="cta-linkedin">
-                            <span>→</span>
-                            <span id="cta-text">LinkedIn</span>
-                        </a>
-                        <a href="mailto:marek.palichleb@gmail.com" class="btn" id="cta-email">
-                            <span>✉</span>
-                            <span id="email-text">Email</span>
-                        </a>
+                        <a href="#products" class="btn btn-primary"><span aria-hidden="true">↓</span><span data-i18n="ctaProducts">Moje produkty</span></a>
+                        <a href="https://linkedin.com/in/palichlebm/" target="_blank" rel="noopener" class="btn"><span aria-hidden="true">→</span><span>LinkedIn</span></a>
+                        <a href="mailto:marek.palichleb@gmail.com" class="btn"><span aria-hidden="true">✉</span><span>Email</span></a>
                     </div>
                 </div>
-                <img src="profile.jpg" alt="Marek Palichleb" class="profile-image" id="profile-img">
+                <img src="profile.jpg" alt="Marek Palichleb" class="profile-image" width="340" height="340">
             </div>
         </header>
 
         <main>
-            <section>
-                <div class="section-header">
-                    <h2 id="about-title">About</h2>
+            <section id="products" aria-labelledby="products-title">
+                <div class="section-header"><h2 id="products-title" data-i18n="productsTitle">Co teraz buduję</h2></div>
+                <p class="section-intro" data-i18n="productsIntro">Dwa produkty, jedna zasada: najpierw rzetelne dane i jawne pochodzenie każdej informacji, dopiero potem wnioski.</p>
+
+                <div class="product-grid">
+                    <article class="product">
+                        <div class="product-top">
+                            <div>
+                                <h3>toClarity</h3>
+                                <p class="kicker" data-i18n="tcKicker">Zrozumiała informacja o zdrowiu</p>
+                            </div>
+                            <span class="status status-live" data-i18n="tcStatus">Online</span>
+                        </div>
+                        <p data-i18n="tcDesc">Zamienia wiele godzin rozmów ekspertów w jasne, uporządkowane odpowiedzi. Pokazuje, w czym eksperci się zgadzają, gdzie się różnią i co dopiero się wyłania.</p>
+                        <ul>
+                            <li data-i18n="tcB1">Synteza wypowiedzi ponad 100 ekspertów zdrowia</li>
+                            <li data-i18n="tcB2">Pięć fundamentów zdrowia: odżywianie, aktywność fizyczna, sen, stres i zdrowie psychiczne, środowisko</li>
+                            <li data-i18n="tcB3">Powiązania z układami organizmu, schorzeniami i zdrowym starzeniem</li>
+                            <li data-i18n="tcB4">Pod spodem: pipeline AI od nagrań do ustrukturyzowanej bazy wiedzy</li>
+                        </ul>
+                        <div class="soon">
+                            <p class="soon-title" data-i18n="tcSoonTitle">Projekt stale rozwijany. Wkrótce:</p>
+                            <ul>
+                                <li data-i18n="tcS1">Monitor spożycia z wyliczaniem mikroelementów</li>
+                                <li data-i18n="tcS2">Sugestie dla osób dbających o zdrowy tryb życia, zmęczonych szumem niepotwierdzonych informacji</li>
+                                <li data-i18n="tcS3">Podcasty, które pomagają lepiej zrozumieć temat</li>
+                            </ul>
+                        </div>
+                        <div class="product-footer">
+                            <a href="https://toclarity.app/" target="_blank" rel="noopener" class="btn btn-primary"><span data-i18n="tcCta">Otwórz toClarity.app</span><span aria-hidden="true">↗</span></a>
+                            <span class="note" data-i18n="tcNote">Źródło informacji, nie porada medyczna.</span>
+                        </div>
+                    </article>
+
+                    <article class="product">
+                        <div class="product-top">
+                            <div>
+                                <h3>Cognitive Core</h3>
+                                <p class="kicker" data-i18n="ccKicker">Strażnik inteligentnego domu dla Home Assistant</p>
+                            </div>
+                            <span class="status status-build" data-i18n="ccStatus">W produkcji u mnie</span>
+                        </div>
+                        <p class="origin" data-i18n="ccOrigin">Narodził się z potrzeby lepszej kontroli nad domem i braku narzędzia, które by ją dawało.</p>
+                        <p data-i18n="ccDesc">Twój dom z Home Assistant zaczyna mówić ludzkim językiem: wiesz, co masz, co działa, co przestało działać i dlaczego. Bez grzebania w logach i bez ryzyka, że coś zmieni się samo.</p>
+                        <ul>
+                            <li data-i18n="ccB1"><strong>Porządek w urządzeniach.</strong> Każde urządzenie ma rozpoznaną rolę, a Ty ją zatwierdzasz albo poprawiasz.</li>
+                            <li data-i18n="ccB2"><strong>Spokój o pompę ciepła.</strong> Widzisz, jak efektywnie pracuje i czy nie dzieje się z nią nic niepokojącego.</li>
+                            <li data-i18n="ccB3"><strong>Pełna kontrola.</strong> Nic nie zmienia się bez Twojej zgody, a dane zostają w domu.</li>
+                        </ul>
+                        <div class="soon">
+                            <p class="soon-title" data-i18n="ccSoonTitle">Trwa duża aktualizacja. W przygotowaniu:</p>
+                            <ul>
+                                <li data-i18n="ccS1"><strong>Przyczyna, nie tylko objaw.</strong> Gdy kilka urządzeń przestaje działać naraz, dostaniesz wyjaśnienie, co je łączy, zamiast listy alarmów.</li>
+                                <li data-i18n="ccS2"><strong>Prawdziwy obraz energii.</strong> Pobór, produkcja PV i koszt według Twojej taryfy, z jasną informacją, gdy danych brakuje.</li>
+                                <li data-i18n="ccS3"><strong>Podpowiedzi zamiast domysłów.</strong> Konkretne rekomendacje z uzasadnieniem, które wdrażasz tylko wtedy, gdy się na nie zgodzisz.</li>
+                            </ul>
+                        </div>
+                        <div class="facts">
+                            <div class="fact"><strong>v1.6.0</strong><span data-i18n="ccF1">działa w moim domu</span></div>
+                            <div class="fact"><strong>100%</strong><span data-i18n="ccF2">decyzji zatwierdza człowiek</span></div>
+                            <div class="fact"><strong>local-first</strong><span data-i18n="ccF3">dane zostają w domu</span></div>
+                        </div>
+                        <div class="product-footer">
+                            <span class="note" data-i18n="ccNote">Projekt prywatny, sprawdzany na co dzień w moim domu, zanim trafi do innych.</span>
+                        </div>
+                    </article>
                 </div>
-                <p class="about-text" id="about-text">
-                    Senior Analyst z 10+ lat doświadczenia. Pracuję na granicy biznesu i technologii — analizuję procesy, projektuję integracje, dostarczam rezultaty. Doświadczenie w telekomunikacji, ecommerce, FinTech i consulting biznesowym. Współpracuję z zespołami nad strategią, transformacją cyfrową i skalowaniem operacyjnym.
-                </p>
             </section>
 
-            <section>
-                <div class="section-header">
-                    <h2 id="work-title">Selected Work</h2>
+            <section aria-labelledby="principles-title">
+                <div class="section-header"><h2 id="principles-title" data-i18n="principlesTitle">Jak pracuję</h2></div>
+                <div class="principles">
+                    <div class="principle">
+                        <h3 data-i18n="p1h">Najpierw dane, potem wnioski</h3>
+                        <p data-i18n="p1t">Sprawdzam kompletność i pochodzenie danych, zanim cokolwiek policzę. Pomiar, wartość wyliczona i szacunek są zawsze oznaczone osobno.</p>
+                    </div>
+                    <div class="principle">
+                        <h3 data-i18n="p2h">Kryteria przed testem</h3>
+                        <p data-i18n="p2t">Progi sukcesu i sposób oceny ustalam, zanim zobaczę wyniki. Dzięki temu wynik nie jest dopasowywany do oczekiwań.</p>
+                    </div>
+                    <div class="principle">
+                        <h3 data-i18n="p3h">Małe kroki z bramkami</h3>
+                        <p data-i18n="p3t">Każde wydanie ma zakres, testy, plan wycofania i zapis wdrożenia. Decyzje i dowody trafiają do jednego rejestru.</p>
+                    </div>
+                    <div class="principle">
+                        <h3 data-i18n="p4h">AI rekomenduje, człowiek decyduje</h3>
+                        <p data-i18n="p4t">Model wyjaśnia i proponuje. Zmiany w systemach wymagają jawnej zgody i są rozdzielone od warstwy AI.</p>
+                    </div>
                 </div>
+            </section>
+
+            <section aria-labelledby="about-title">
+                <div class="section-header"><h2 id="about-title" data-i18n="aboutTitle">O mnie</h2></div>
+                <p class="about-text" data-i18n="aboutText">Senior Business Analyst z ponad 10 latami doświadczenia. Pracuję na granicy biznesu i technologii: analizuję procesy, projektuję integracje i dowożę rezultaty. Doświadczenie w telekomunikacji, e-commerce, FinTech i doradztwie biznesowym. Wspieram zespoły w strategii, transformacji cyfrowej i skalowaniu operacji, a własne produkty pozwalają mi sprawdzać te metody w praktyce.</p>
+            </section>
+
+            <section aria-labelledby="work-title">
+                <div class="section-header"><h2 id="work-title" data-i18n="workTitle">Wybrane projekty</h2></div>
                 <div class="work-grid">
                     <div class="work-card">
-                        <h3 id="w1-title">AI Pipeline do strukturyzacji wiedzy zdrowotnej</h3>
-                        <p class="work-desc" id="w1-desc">System zbierania danych audio, ich strukturyzacji i przechowywania w bazie centralnej. LLM, prompt engineering, projektowanie schematu Airtable. Architektura przygotowana do 300+ źródeł danych.</p>
-                        <div class="tags">
-                            <span class="tag">AI / LLM</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Airtable</span>
-                            <span class="tag">Process Design</span>
-                        </div>
+                        <h3 data-i18n="w2Title">Doradztwo w zakresie infrastruktury sieciowej</h3>
+                        <p class="work-desc" data-i18n="w2Desc">Projekt zaawansowanej infrastruktury WiFi z dokumentacją dwujęzyczną, architekturą sieciową i metodyką pilot-first z etapami zatwierdzenia. Wdrożenie w trakcie.</p>
+                        <div class="tags"><span class="tag">Network Design</span><span class="tag">Technical Consulting</span><span class="tag">Project Proposals</span></div>
                     </div>
-
                     <div class="work-card">
-                        <h3 id="w2-title">Network infrastructure consulting</h3>
-                        <p class="work-desc" id="w2-desc">Projekt zaawansowanej infrastruktury WiFi z dokumentacją dwujęzyczną, architekturą sieciową i metodyką pilot-first z etapami zatwierdzenia. Wdrożenie w trakcie.</p>
-                        <div class="tags">
-                            <span class="tag">Network Design</span>
-                            <span class="tag">Technical Consulting</span>
-                            <span class="tag">Project Proposals</span>
-                        </div>
+                        <h3 data-i18n="w3Title">Automatyzacja danych: deduplikacja i skalowanie</h3>
+                        <p class="work-desc" data-i18n="w3Desc">Pipeline w Pythonie do deduplikacji i reorganizacji plików. 112 tys. zasobów przetworzonych, 85 GB odzyskanych. Zero strat danych, pełna ścieżka audytu, architektura gotowa na kolejne przebiegi.</p>
+                        <div class="tags"><span class="tag">Python</span><span class="tag">Data Ops</span><span class="tag">Automation</span></div>
                     </div>
-
                     <div class="work-card">
-                        <h3 id="w3-title">Data automation — deduplication & scaling</h3>
-                        <p class="work-desc" id="w3-desc">Pipeline Python do deduplikacji i reorganizacji plików. 112 tys. zasobów przetworzonych, 85 GB zaoszczędzonych. Zero strat danych, pełna przejrzystość audytu. Architektura skalowalna do przyszłych przetwarzań.</p>
-                        <div class="tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Data Ops</span>
-                            <span class="tag">Automation</span>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <h3 id="w4-title">Financial analysis & reporting</h3>
-                        <p class="work-desc" id="w4-desc">Kompleksowa analiza strategii inwestycyjnej dla klientów indywidualnych. Metodyki długoterminowego planowania finansowego, modelowanie scenariuszy, ocena ryzyka. Dokumentacja dwujęzyczna.</p>
-                        <div class="tags">
-                            <span class="tag">Financial Analysis</span>
-                            <span class="tag">Strategy</span>
-                            <span class="tag">Reporting</span>
-                        </div>
+                        <h3 data-i18n="w4Title">Analizy finansowe i raportowanie</h3>
+                        <p class="work-desc" data-i18n="w4Desc">Analiza strategii inwestycyjnej dla klientów indywidualnych. Metodyki długoterminowego planowania finansowego, modelowanie scenariuszy, ocena ryzyka. Dokumentacja dwujęzyczna.</p>
+                        <div class="tags"><span class="tag">Financial Analysis</span><span class="tag">Strategy</span><span class="tag">Reporting</span></div>
                     </div>
                 </div>
             </section>
 
-            <section>
-                <div class="section-header">
-                    <h2 id="collab-title">How I Can Help</h2>
-                </div>
+            <section aria-labelledby="collab-title">
+                <div class="section-header"><h2 id="collab-title" data-i18n="collabTitle">Jak mogę pomóc</h2></div>
                 <div class="collab-grid">
                     <div class="collab-item">
-                        <h3 id="c1-h">Procesy & Systemy</h3>
-                        <p id="c1-t">Analiza istniejących procesów, projektowanie nowych rozwiązań, integracje API, przygotowanie do wdrożeń. Wsparcie w transformacji cyfrowej i skalowaniu.</p>
+                        <h3 data-i18n="c1h">Procesy i systemy</h3>
+                        <p data-i18n="c1t">Analiza istniejących procesów, projektowanie nowych rozwiązań, integracje API, przygotowanie do wdrożeń. Wsparcie w transformacji cyfrowej i skalowaniu.</p>
                     </div>
                     <div class="collab-item">
-                        <h3 id="c2-h">AI & Automation</h3>
-                        <p id="c2-t">Pipelines LLM, prompt engineering, strukturyzacja danych. Od koncepcji do produkcji — skalowalne systemy do syntezy wiedzy i tworzenia treści.</p>
+                        <h3 data-i18n="c2h">AI i automatyzacja</h3>
+                        <p data-i18n="c2t">Pipeline'y LLM, prompt engineering, strukturyzacja danych. Od koncepcji do produkcji, tak jak w toClarity: skalowalne systemy syntezy wiedzy.</p>
                     </div>
                     <div class="collab-item">
-                        <h3 id="c3-h">Technical Consulting</h3>
-                        <p id="c3-t">Infrastruktura sieciowa, bezpieczeństwo, projektowanie systemów. Dla organizacji rozwijających nowe projekty lub audytujących istniejące rozwiązania.</p>
+                        <h3 data-i18n="c3h">Dane, energia i smart home</h3>
+                        <p data-i18n="c3t">Audyt jakości danych z Home Assistant, liczników i taryf. Monitoring tylko do odczytu, jasne granice pomiaru, bez sterowania bez zgody. Doświadczenie z Cognitive Core.</p>
                     </div>
                     <div class="collab-item">
-                        <h3 id="c4-h">Projekty niestandardowe</h3>
-                        <p id="c4-t">Automatyzacja dokumentów, propozycje wielojęzyczne, badania i synteza danych. Jeśli chodzi o dane, systemy, procesy — zwykle da się to zrobić.</p>
+                        <h3 data-i18n="c4h">Doradztwo techniczne</h3>
+                        <p data-i18n="c4t">Infrastruktura sieciowa, bezpieczeństwo, projektowanie systemów. Dla organizacji rozwijających nowe projekty lub audytujących istniejące rozwiązania.</p>
                     </div>
                 </div>
             </section>
         </main>
 
-        <footer id="footer">
-            © 2026 Marek Palichleb. Zawsze dostępny do rozmowy o systemach, danych i możliwościach.
-        </footer>
+        <footer data-i18n="footer">© 2026 Marek Palichleb. Chętnie porozmawiam o systemach, danych i możliwościach.</footer>
     </div>
 
     <script>
         const content = {
-            pl: {
-                name: "Marek Palichleb",
-                tagline: "Senior Business Analyst | Bridge between business & IT",
-                location: "EU-based",
-                status: "Dostępny do projektów",
-                ctaText: "LinkedIn",
-                emailText: "Email",
-                aboutTitle: "O mnie",
-                aboutText: "Senior Analyst z 10+ lat doświadczenia. Pracuję na granicy biznesu i technologii — analizuję procesy, projektuję integracje, dostarczam rezultaty. Doświadczenie w telekomunikacji, ecommerce, FinTech i consulting biznesowym. Współpracuję z zespołami nad strategią, transformacją cyfrową i skalowaniem operacyjnym.",
-                workTitle: "Wybrane projekty",
-                w1: {
-                    title: "AI Pipeline do strukturyzacji wiedzy zdrowotnej",
-                    desc: "System zbierania danych audio, ich strukturyzacji i przechowywania w bazie centralnej. LLM, prompt engineering, projektowanie schematu Airtable. Architektura przygotowana do 300+ źródeł danych."
-                },
-                w2: {
-                    title: "Network infrastructure consulting",
-                    desc: "Projekt zaawansowanej infrastruktury WiFi z dokumentacją dwujęzyczną, architekturą sieciową i metodyką pilot-first z etapami zatwierdzenia. Wdrożenie w trakcie."
-                },
-                w3: {
-                    title: "Data automation — deduplication & scaling",
-                    desc: "Pipeline Python do deduplikacji i reorganizacji plików. 112 tys. zasobów przetworzonych, 85 GB zaoszczędzonych. Zero strat danych, pełna przejrzystość audytu. Architektura skalowalna do przyszłych przetwarzań."
-                },
-                w4: {
-                    title: "Financial analysis & reporting",
-                    desc: "Kompleksowa analiza strategii inwestycyjnej dla klientów indywidualnych. Metodyki długoterminowego planowania finansowego, modelowanie scenariuszy, ocena ryzyka. Dokumentacja dwujęzyczna."
-                },
-                collabTitle: "Jak mogę pomóc",
-                c1: { h: "Procesy & Systemy", t: "Analiza istniejących procesów, projektowanie nowych rozwiązań, integracje API, przygotowanie do wdrożeń. Wsparcie w transformacji cyfrowej i skalowaniu." },
-                c2: { h: "AI & Automation", t: "Pipelines LLM, prompt engineering, strukturyzacja danych. Od koncepcji do produkcji — skalowalne systemy do syntezy wiedzy i tworzenia treści." },
-                c3: { h: "Technical Consulting", t: "Infrastruktura sieciowa, bezpieczeństwo, projektowanie systemów. Dla organizacji rozwijających nowe projekty lub audytujących istniejące rozwiązania." },
-                c4: { h: "Projekty niestandardowe", t: "Automatyzacja dokumentów, propozycje wielojęzyczne, badania i synteza danych. Jeśli chodzi o dane, systemy, procesy — zwykle da się to zrobić." },
-                footer: "© 2026 Marek Palichleb. Zawsze dostępny do rozmowy o systemach, danych i możliwościach."
-            },
             en: {
-                name: "Marek Palichleb",
-                tagline: "Senior Business Analyst | Bridge between business & IT",
-                location: "EU-based",
+                tagline: "Senior Business Analyst | Bridge between business and IT",
+                lead: "I build systems where data can be trusted and every result can be checked. Right now I am developing two products of my own: toClarity and Cognitive Core.",
+                location: "Poland, working across the EU",
                 status: "Available for projects",
-                ctaText: "LinkedIn",
-                emailText: "Email",
+                ctaProducts: "My products",
+                productsTitle: "What I'm building",
+                productsIntro: "Two products, one rule: reliable data and visible provenance for every piece of information first, conclusions second.",
+                tcKicker: "Making sense of health information",
+                tcStatus: "Live",
+                tcDesc: "Turns hours of expert discussions into clear, structured answers. Shows where experts agree, where they disagree and what is still emerging.",
+                tcB1: "Structured synthesis across 100+ health voices",
+                tcB2: "Five health foundations: nutrition, physical activity, sleep, stress and mental health, environment",
+                tcB3: "Linked to body systems, health conditions and healthy ageing",
+                tcB4: "Under the hood: an AI pipeline from recordings to a structured knowledge base",
+                tcSoonTitle: "Under active development. Coming soon:",
+                tcS1: "A food intake monitor that calculates micronutrients",
+                tcS2: "Suggestions for people who care about a healthy lifestyle and are tired of the noise of unverified claims",
+                tcS3: "Podcasts that help you understand the topic more deeply",
+                tcCta: "Open toClarity.app",
+                tcNote: "An information resource, not medical advice.",
+                ccKicker: "A guardian for the smart home, built for Home Assistant",
+                ccStatus: "In production at home",
+                ccOrigin: "Born out of the need for better control over my home, and the lack of a tool that offered it.",
+                ccDesc: "Your Home Assistant home starts speaking plain language: you know what you have, what works, what stopped working and why. No digging through logs, and no risk of anything changing on its own.",
+                ccB1: "<strong>Order in your devices.</strong> Every device gets a recognised role, and you confirm or correct it.",
+                ccB2: "<strong>Peace of mind about your heat pump.</strong> See how efficiently it runs and whether anything looks wrong.",
+                ccB3: "<strong>Full control.</strong> Nothing changes without your consent, and your data stays at home.",
+                ccSoonTitle: "A major upgrade is under way. Coming next:",
+                ccS1: "<strong>The cause, not just the symptom.</strong> When several devices fail at once, you get an explanation of what links them instead of a list of alerts.",
+                ccS2: "<strong>A true picture of your energy.</strong> Consumption, PV production and cost under your tariff, with a clear note whenever data is missing.",
+                ccS3: "<strong>Guidance instead of guesswork.</strong> Concrete recommendations with reasons, applied only when you agree to them.",
+                ccF1: "running in my home",
+                ccF2: "of decisions approved by a person",
+                ccF3: "data stays at home",
+                ccNote: "Private project, tested daily in my own home before it reaches anyone else.",
+                principlesTitle: "How I work",
+                p1h: "Data first, conclusions second",
+                p1t: "I check completeness and provenance before calculating anything. Measured, derived and estimated values are always labelled separately.",
+                p2h: "Criteria before the test",
+                p2t: "Success thresholds and the evaluation method are fixed before I see the results, so results are never fitted to expectations.",
+                p3h: "Small, gated steps",
+                p3t: "Every release has a scope, tests, a rollback plan and a deployment record. Decisions and evidence live in a single register.",
+                p4h: "AI recommends, people decide",
+                p4t: "Models explain and propose. Changes to live systems need explicit approval and are kept separate from the AI layer.",
                 aboutTitle: "About",
-                aboutText: "Senior Analyst with 10+ years in business systems. I operate at the intersection of business and IT — analyzing processes, designing integrations, delivering results in complex environments. Experience in telecom, ecommerce, fintech and management consulting. I partner with teams on product strategy, digital transformation and operational scaling.",
-                workTitle: "Selected Work",
-                w1: {
-                    title: "AI pipeline for health knowledge structuring",
-                    desc: "End-to-end system: audio source ingestion → data structuring → central repository. LLM integration, prompt engineering, Airtable schema design. Architecture scaled to 300+ input sources."
-                },
-                w2: {
-                    title: "Network infrastructure consulting",
-                    desc: "Design and proposal for advanced WiFi infrastructure deployment. Bilingual documentation, network architecture, pilot-first methodology, approval gates. Implementation in development phase."
-                },
-                w3: {
-                    title: "Data automation — deduplication & scaling",
-                    desc: "Python pipeline: deduplication + file reorganization. 112K assets processed, 85 GB freed. Zero data loss, full auditability. Scalable architecture for future batches."
-                },
-                w4: {
-                    title: "Financial analysis & reporting",
-                    desc: "Comprehensive investment strategy analysis for private clients. Structured frameworks for long-term financial planning, scenario modeling, risk assessment. Bilingual deliverables."
-                },
-                collabTitle: "How I Can Help",
-                c1: { h: "Processes & Systems", t: "AS-IS mapping, TO-BE redesign, API integrations, go-live readiness. Support for teams undertaking digital transformation and operational scaling." },
-                c2: { h: "AI & Automation", t: "LLM pipelines, prompt engineering, data structuring. Concept to production — scalable systems for knowledge synthesis and content generation." },
-                c3: { h: "Technical Consulting", t: "Network infrastructure, cybersecurity, system design. For organizations launching new initiatives or auditing existing systems." },
-                c4: { h: "Bespoke projects", t: "Document automation, multilingual proposals, research + synthesis. If it involves data, systems, or process — likely we can build it." },
-                footer: "© 2026 Marek Palichleb. Always available to discuss systems, data, and possibilities."
+                aboutText: "Senior Business Analyst with 10+ years of experience. I work where business meets technology: analysing processes, designing integrations and delivering results. Background in telecom, e-commerce, fintech and management consulting. I help teams with strategy, digital transformation and operational scaling, and my own products let me test these methods in practice.",
+                workTitle: "Selected work",
+                w2Title: "Network infrastructure consulting",
+                w2Desc: "Design and proposal for an advanced WiFi infrastructure. Bilingual documentation, network architecture, pilot-first methodology with approval gates. Implementation in progress.",
+                w3Title: "Data automation: deduplication and scaling",
+                w3Desc: "Python pipeline for deduplication and file reorganisation. 112K assets processed, 85 GB freed. Zero data loss, full audit trail, architecture ready for future batches.",
+                w4Title: "Financial analysis and reporting",
+                w4Desc: "Investment strategy analysis for private clients. Long-term financial planning frameworks, scenario modelling, risk assessment. Bilingual deliverables.",
+                collabTitle: "How I can help",
+                c1h: "Processes and systems",
+                c1t: "AS-IS mapping, TO-BE redesign, API integrations, go-live readiness. Support for teams going through digital transformation and operational scaling.",
+                c2h: "AI and automation",
+                c2t: "LLM pipelines, prompt engineering, data structuring. Concept to production, as in toClarity: scalable systems for knowledge synthesis.",
+                c3h: "Data, energy and smart home",
+                c3t: "Data quality audits for Home Assistant, meters and tariffs. Read-only monitoring, clear measurement boundaries, no control without consent. Experience from Cognitive Core.",
+                c4h: "Technical consulting",
+                c4t: "Network infrastructure, security, system design. For organisations launching new initiatives or auditing existing systems.",
+                footer: "© 2026 Marek Palichleb. Always happy to talk about systems, data and possibilities."
             }
         };
 
-        let currentLang = 'pl';
+        // Polish text is the page source; capture it so switching back restores it exactly.
+        content.pl = {};
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            content.pl[el.dataset.i18n] = el.innerHTML;
+        });
 
-        function switchLang(lang) {
-            currentLang = lang;
-            const c = content[lang];
-
-            document.getElementById('name').textContent = c.name;
-            document.getElementById('tagline').textContent = c.tagline;
-            document.getElementById('location').textContent = c.location;
-            document.getElementById('status').textContent = c.status;
-            document.getElementById('cta-text').textContent = c.ctaText;
-            document.getElementById('email-text').textContent = c.emailText;
-
-            document.getElementById('about-title').textContent = c.aboutTitle;
-            document.getElementById('about-text').textContent = c.aboutText;
-            document.getElementById('work-title').textContent = c.workTitle;
-
-            document.getElementById('w1-title').textContent = c.w1.title;
-            document.getElementById('w1-desc').textContent = c.w1.desc;
-            document.getElementById('w2-title').textContent = c.w2.title;
-            document.getElementById('w2-desc').textContent = c.w2.desc;
-            document.getElementById('w3-title').textContent = c.w3.title;
-            document.getElementById('w3-desc').textContent = c.w3.desc;
-            document.getElementById('w4-title').textContent = c.w4.title;
-            document.getElementById('w4-desc').textContent = c.w4.desc;
-
-            document.getElementById('collab-title').textContent = c.collabTitle;
-            document.getElementById('c1-h').textContent = c.c1.h;
-            document.getElementById('c1-t').textContent = c.c1.t;
-            document.getElementById('c2-h').textContent = c.c2.h;
-            document.getElementById('c2-t').textContent = c.c2.t;
-            document.getElementById('c3-h').textContent = c.c3.h;
-            document.getElementById('c3-t').textContent = c.c3.t;
-            document.getElementById('c4-h').textContent = c.c4.h;
-            document.getElementById('c4-t').textContent = c.c4.t;
-
-            document.getElementById('footer').textContent = c.footer;
-
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+        function setLang(lang) {
+            const c = content[lang] || content.pl;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const value = c[el.dataset.i18n];
+                if (value !== undefined) el.innerHTML = value; // static, author-controlled strings only
+            });
+            document.documentElement.lang = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
+            });
+            try { localStorage.setItem('lang', lang); } catch (e) {}
         }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLang(btn.dataset.lang));
+        });
+
+        let saved = null;
+        try { saved = localStorage.getItem('lang'); } catch (e) {}
+        if (saved === 'en') setLang('en');
     </script>
 </body>
 </html>
