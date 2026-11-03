@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marek Palichleb | Systemy, dane i AI</title>
-    <meta name="description" content="Buduję systemy, w których dane są wiarygodne, a decyzje możliwe do sprawdzenia: Cognitive Core i współtworzone toClarity.">
-    <meta property="og:title" content="Marek Palichleb | Systemy, dane i AI">
-    <meta property="og:description" content="Systemy, dane i AI z jawnym pochodzeniem wyników. toClarity i Cognitive Core.">
+    <title>Marek Palichleb | Odkrywam możliwości w złożoności</title>
+    <meta name="description" content="Odkrywam możliwości tam, gdzie inni widzą złożoność: niższe koszty energii w domu z Cognitive Core i lepsze decyzje dotyczące zdrowia z toClarity.">
+    <meta property="og:title" content="Marek Palichleb | Odkrywam możliwości w złożoności">
+    <meta property="og:description" content="Niższe koszty energii w domu z Cognitive Core i lepsze decyzje dotyczące zdrowia z toClarity.">
     <meta property="og:image" content="profile.jpg">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
@@ -103,8 +103,74 @@
             font-weight: 650;
             letter-spacing: -0.6px;
             line-height: 1.15;
-            margin-bottom: 10px;
+            margin-bottom: 16px;
         }
+
+        .eyebrow {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .value-links {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 24px;
+            max-width: 520px;
+        }
+
+        .value-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--color-text);
+            background: var(--color-light-bg);
+            transition: border-color 0.2s;
+        }
+
+        .value-link:hover, .value-link:focus-visible { border-color: var(--color-accent); }
+        .value-link .icon { font-size: 18px; width: 24px; text-align: center; flex-shrink: 0; }
+        .value-link strong { display: block; font-size: 15px; }
+        .value-link span.sub { display: block; font-size: 13px; color: var(--color-text-secondary); }
+        .value-link .arrow { margin-left: auto; color: var(--color-text-secondary); }
+
+        .energy-map {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            background: var(--color-light-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            padding: 12px;
+        }
+
+        .energy-tile {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 14px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .energy-tile svg { width: 26px; height: 26px; stroke: var(--color-accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        .energy-tile strong { font-size: 14px; }
+        .energy-tile .status { align-self: flex-start; font-size: 11px; padding: 2px 8px; }
+
+        .product .energy-caption { grid-column: 1 / -1; font-size: 12px; color: var(--color-text-secondary); text-align: center; }
+
+        .value-link svg { width: 22px; height: 22px; stroke: var(--color-accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+        .benefit { font-size: 17px; font-weight: 600; line-height: 1.4; }
+
+        .product .status-now { font-size: 14px; color: var(--color-text-secondary); }
+        .status-now strong { color: var(--color-text); font-weight: 600; }
 
         .tagline {
             font-size: 17px;
@@ -165,6 +231,7 @@
         .profile-image {
             width: 100%;
             max-width: 340px;
+            height: auto;
             aspect-ratio: 1;
             border-radius: 12px;
             object-fit: cover;
@@ -388,7 +455,7 @@
 
         @media (max-width: 768px) {
             .header-content { grid-template-columns: 1fr; gap: 28px; }
-            .profile-image { max-width: 220px; justify-self: start; order: -1; }
+            .profile-image { max-width: 120px; justify-self: start; order: -1; }
             h1 { font-size: 30px; }
             .collab-grid, .principles { grid-template-columns: 1fr; }
             header { padding: 56px 0 40px; }
@@ -402,6 +469,7 @@
             h1 { font-size: 26px; }
             .tagline { font-size: 15px; }
             .product { padding: 22px; }
+            .product-top { flex-wrap: wrap; }
             .facts { grid-template-columns: 1fr 1fr; }
             .cta-buttons { flex-direction: column; }
             .btn { width: 100%; justify-content: center; }
@@ -424,16 +492,27 @@
 
             <div class="header-content">
                 <div>
-                    <h1>Marek Palichleb</h1>
-                    <p class="tagline" data-i18n="tagline">Systemy, dane i AI | Most między biznesem a IT</p>
-                    <p class="lead" data-i18n="lead">Buduję systemy, w których dane są wiarygodne, a każdy wynik da się sprawdzić. Dziś rozwijam własny projekt Cognitive Core i współtworzę toClarity.</p>
+                    <p class="eyebrow">Marek Palichleb</p>
+                    <h1 data-i18n="headline">Odkrywam możliwości tam, gdzie inni widzą złożoność.</h1>
+                    <p class="lead" data-i18n="lead">Wykorzystuję dane i technologię, aby odkrywać możliwości, które naprawdę mają znaczenie: od obniżania kosztów energii w domu po lepsze decyzje dotyczące zdrowia.</p>
+                    <div class="value-links">
+                        <a class="value-link" href="#cognitive-core">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+                            <span><strong data-i18n="v1Title">Oszczędzaj na kosztach utrzymania domu</strong><span class="sub" data-i18n="v1Sub">Cognitive Core</span></span>
+                            <span class="arrow" aria-hidden="true">↓</span>
+                        </a>
+                        <a class="value-link" href="#toclarity">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
+                            <span><strong data-i18n="v2Title">Podejmuj lepsze decyzje dotyczące zdrowia</strong><span class="sub">toClarity</span></span>
+                            <span class="arrow" aria-hidden="true">↓</span>
+                        </a>
+                    </div>
                     <div class="meta">
                         <span data-i18n="location">Polska, praca w całej UE</span>
                         <span data-i18n="status">Dostępny do projektów</span>
                     </div>
                     <div class="cta-buttons">
-                        <a href="#products" class="btn btn-primary"><span aria-hidden="true">↓</span><span data-i18n="ctaProducts">Moje projekty</span></a>
-                        <a href="https://linkedin.com/in/palichlebm/" target="_blank" rel="noopener" class="btn"><span aria-hidden="true">→</span><span>LinkedIn</span></a>
+                        <a href="https://linkedin.com/in/palichlebm/" target="_blank" rel="noopener" class="btn btn-primary"><span aria-hidden="true">→</span><span>LinkedIn</span></a>
                         <a href="mailto:marek.palichleb@gmail.com" class="btn"><span aria-hidden="true">✉</span><span>Email</span></a>
                     </div>
                 </div>
@@ -443,28 +522,52 @@
 
         <main>
             <section id="products" aria-labelledby="products-title">
-                <div class="section-header"><h2 id="products-title" data-i18n="productsTitle">Co teraz buduję</h2></div>
+                <div class="section-header"><h2 id="products-title" data-i18n="productsTitle">Nad czym pracuję</h2></div>
                 <p class="section-intro" data-i18n="productsIntro">Dwa projekty, jedna zasada: najpierw rzetelne dane i jawne pochodzenie każdej informacji, dopiero potem wnioski.</p>
 
                 <div class="product-grid">
-                    <article class="product">
+                    <article class="product" id="cognitive-core">
                         <div class="product-top">
-                            <div>
-                                <h3>toClarity</h3>
-                                <p class="kicker" data-i18n="tcKicker">Zrozumiała informacja o zdrowiu</p>
-                            </div>
-                            <span class="status status-live" data-i18n="tcStatus">Online · współpraca</span>
+                            <h3>Cognitive Core</h3>
+                            <span class="status status-build" data-i18n="ccStatus">W rozwoju · działa u mnie</span>
                         </div>
-                        <p data-i18n="tcDesc">Zamienia wiele godzin rozmów ekspertów w jasne, uporządkowane odpowiedzi. Pokazuje, w czym eksperci się zgadzają, gdzie się różnią i co dopiero się wyłania.</p>
+                        <p class="benefit" data-i18n="ccBenefit">Oszczędzaj na kosztach utrzymania domu</p>
+                        <p data-i18n="ccDesc">Ogrzewanie, ciepła woda, prąd i fotowoltaika to osobne liczniki, aplikacje i rachunki. Cognitive Core pomaga zobaczyć je jako całość, żebyś wiedział, co się naprawdę dzieje w Twoim domu.</p>
+                        <ul>
+                            <li data-i18n="ccB1">Zobacz, gdzie energia jest zużywana niepotrzebnie</li>
+                            <li data-i18n="ccB2">Zrozum, na co idą pieniądze</li>
+                            <li data-i18n="ccB3">Odkryj, gdzie da się zaoszczędzić</li>
+                            <li data-i18n="ccB4">Decyduj o energii na podstawie danych, a nie przeczucia</li>
+                        </ul>
+                        <div class="energy-map">
+                            <div class="energy-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg><strong data-i18n="e1">Ogrzewanie</strong><span class="status status-live" data-i18n="eNow1">działa</span></div>
+                            <div class="energy-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg><strong data-i18n="e2">Ciepła woda</strong><span class="status status-live" data-i18n="eNow2">działa</span></div>
+                            <div class="energy-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><strong data-i18n="e3">Prąd</strong><span class="status status-build" data-i18n="eSoon1">wkrótce</span></div>
+                            <div class="energy-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><strong data-i18n="e4">Fotowoltaika</strong><span class="status status-build" data-i18n="eSoon2">wkrótce</span></div>
+                            <p class="energy-caption" data-i18n="eCap">Dziś: monitor pompy ciepła i ciepłej wody. W przygotowaniu: prąd, fotowoltaika i koszty według Twojej taryfy.</p>
+                        </div>
+                        <p class="status-now" data-i18n="ccTrust"><strong>Zawsze:</strong> nic nie zmienia się bez Twojej zgody, a dane zostają w domu.</p>
+                        <div class="product-footer">
+                            <span class="note" data-i18n="ccNote">Nie obiecuję konkretnych oszczędności: pokazuję je dopiero wtedy, gdy wynikają z pomiarów. Projekt narodził się z potrzeby lepszej kontroli nad własnym domem.</span>
+                        </div>
+                    </article>
+
+                    <article class="product" id="toclarity">
+                        <div class="product-top">
+                            <h3>toClarity</h3>
+                            <span class="status status-live" data-i18n="tcStatus">Online</span>
+                        </div>
+                        <p class="benefit" data-i18n="tcBenefit">Podejmuj lepsze decyzje dotyczące zdrowia</p>
+                        <p data-i18n="tcDesc">Badania i opinie ekspertów często są sprzeczne i trudne do oceny. toClarity porządkuje je i pokazuje, w czym eksperci się zgadzają, gdzie się różnią i co dopiero się wyłania.</p>
                         <figure class="product-figure">
                             <img src="toclarity-foundations.jpg" width="890" height="512" loading="lazy" alt="Piramida toClarity: u góry długie i zdrowe życie, pośrodku monitorowanie sygnałów zdrowia, u podstawy pięć fundamentów: odżywianie, aktywność fizyczna, sen, stres i zdrowie psychiczne, środowisko" data-i18n-alt="tcFigAlt">
                             <figcaption data-i18n="tcFigCap">Pięć fundamentów zdrowia, które regularnie wracają w rozmowach ekspertów</figcaption>
                         </figure>
                         <ul>
-                            <li data-i18n="tcB1">Synteza wypowiedzi ponad 100 ekspertów zdrowia</li>
-                            <li data-i18n="tcB2">Pięć fundamentów zdrowia: odżywianie, aktywność fizyczna, sen, stres i zdrowie psychiczne, środowisko</li>
-                            <li data-i18n="tcB3">Powiązania z układami organizmu, schorzeniami i zdrowym starzeniem</li>
-                            <li data-i18n="tcB4">Pod spodem: pipeline AI od nagrań do ustrukturyzowanej bazy wiedzy</li>
+                            <li data-i18n="tcB1">Zrozum, co mówią dowody naukowe w ważnych dla Ciebie tematach</li>
+                            <li data-i18n="tcB2">Znajdź pytania o zdrowie, którym warto się przyjrzeć</li>
+                            <li data-i18n="tcB3">Rozpoznaj czynniki, które mogą wpływać na Twoje zdrowie</li>
+                            <li data-i18n="tcB4">Przygotuj się do lepszej rozmowy z lekarzem</li>
                         </ul>
                         <div class="soon">
                             <p class="soon-title" data-i18n="tcSoonTitle">Projekt stale rozwijany. Wkrótce:</p>
@@ -476,40 +579,7 @@
                         </div>
                         <div class="product-footer">
                             <a href="https://toclarity.app/" target="_blank" rel="noopener" class="btn btn-primary"><span data-i18n="tcCta">Otwórz toClarity.app</span><span aria-hidden="true">↗</span></a>
-                            <span class="note" data-i18n="tcNote">Projekt realizowany we współpracy. Źródło informacji, nie porada medyczna.</span>
-                        </div>
-                    </article>
-
-                    <article class="product">
-                        <div class="product-top">
-                            <div>
-                                <h3>Cognitive Core</h3>
-                                <p class="kicker" data-i18n="ccKicker">Strażnik inteligentnego domu dla Home Assistant</p>
-                            </div>
-                            <span class="status status-build" data-i18n="ccStatus">W produkcji u mnie</span>
-                        </div>
-                        <p class="origin" data-i18n="ccOrigin">Narodził się z potrzeby lepszej kontroli nad domem i braku narzędzia, które by ją dawało.</p>
-                        <p data-i18n="ccDesc">Twój dom z Home Assistant zaczyna mówić ludzkim językiem: wiesz, co masz, co działa, co przestało działać i dlaczego. Bez grzebania w logach i bez ryzyka, że coś zmieni się samo.</p>
-                        <ul>
-                            <li data-i18n="ccB1"><strong>Porządek w urządzeniach.</strong> Każde urządzenie ma rozpoznaną rolę, a Ty ją zatwierdzasz albo poprawiasz.</li>
-                            <li data-i18n="ccB2"><strong>Spokój o pompę ciepła.</strong> Widzisz, jak efektywnie pracuje i czy nie dzieje się z nią nic niepokojącego.</li>
-                            <li data-i18n="ccB3"><strong>Pełna kontrola.</strong> Nic nie zmienia się bez Twojej zgody, a dane zostają w domu.</li>
-                        </ul>
-                        <div class="soon">
-                            <p class="soon-title" data-i18n="ccSoonTitle">Trwa duża aktualizacja. W przygotowaniu:</p>
-                            <ul>
-                                <li data-i18n="ccS1"><strong>Przyczyna, nie tylko objaw.</strong> Gdy kilka urządzeń przestaje działać naraz, dostaniesz wyjaśnienie, co je łączy, zamiast listy alarmów.</li>
-                                <li data-i18n="ccS2"><strong>Prawdziwy obraz energii.</strong> Pobór, produkcja PV i koszt według Twojej taryfy, z jasną informacją, gdy danych brakuje.</li>
-                                <li data-i18n="ccS3"><strong>Podpowiedzi zamiast domysłów.</strong> Konkretne rekomendacje z uzasadnieniem, które wdrażasz tylko wtedy, gdy się na nie zgodzisz.</li>
-                            </ul>
-                        </div>
-                        <div class="facts">
-                            <div class="fact"><strong>v1.6.0</strong><span data-i18n="ccF1">działa w moim domu</span></div>
-                            <div class="fact"><strong>100%</strong><span data-i18n="ccF2">decyzji zatwierdza człowiek</span></div>
-                            <div class="fact"><strong>local-first</strong><span data-i18n="ccF3">dane zostają w domu</span></div>
-                        </div>
-                        <div class="product-footer">
-                            <span class="note" data-i18n="ccNote">Projekt prywatny, sprawdzany na co dzień w moim domu, zanim trafi do innych.</span>
+                            <span class="note" data-i18n="tcNote">Projekt rozwijany we współpracy. Źródło informacji, nie porada medyczna.</span>
                         </div>
                     </article>
                 </div>
@@ -592,43 +662,48 @@
     <script>
         const content = {
             en: {
-                tagline: "Systems, data and AI | Bridge between business and IT",
-                lead: "I build systems where data can be trusted and every result can be checked. Right now I am building my own project, Cognitive Core, and co-creating toClarity.",
+                headline: "I find opportunities where others see complexity.",
+                lead: "I use data and technology to uncover the opportunities that really matter: from lowering the cost of running a home to making better decisions about health.",
+                v1Title: "Save on the cost of running your home",
+                v1Sub: "Cognitive Core",
+                v2Title: "Make better-informed decisions about your health",
                 location: "Poland, working across the EU",
                 status: "Available for projects",
-                ctaProducts: "My projects",
-                productsTitle: "What I'm building",
+                productsTitle: "What I work on",
                 productsIntro: "Two projects, one rule: reliable data and visible provenance for every piece of information first, conclusions second.",
-                tcKicker: "Making sense of health information",
-                tcStatus: "Live · collaboration",
-                tcDesc: "Turns hours of expert discussions into clear, structured answers. Shows where experts agree, where they disagree and what is still emerging.",
+                ccStatus: "In development · running at home",
+                ccBenefit: "Save on the cost of running your home",
+                ccDesc: "Heating, hot water, electricity and solar are separate meters, apps and bills. Cognitive Core helps you see them as a whole, so you know what is really happening in your home.",
+                ccB1: "See where energy is used unnecessarily",
+                ccB2: "Understand where the money goes",
+                ccB3: "Discover where savings are possible",
+                ccB4: "Decide about energy based on data, not gut feeling",
+                e1: "Heating",
+                e2: "Hot water",
+                e3: "Electricity",
+                e4: "Solar",
+                eNow1: "working",
+                eNow2: "working",
+                eSoon1: "coming soon",
+                eSoon2: "coming soon",
+                eCap: "Today: heat pump and hot water monitor. Coming next: electricity, solar and costs under your own tariff.",
+                ccTrust: "<strong>Always:</strong> nothing changes without your consent, and your data stays at home.",
+                ccNote: "I do not promise specific savings: I show them only when measurements back them up. The project grew out of the need for better control over my own home.",
+                tcStatus: "Live",
+                tcBenefit: "Make better-informed decisions about your health",
+                tcDesc: "Research and expert opinions often conflict and are hard to judge. toClarity organises them and shows where experts agree, where they disagree and what is still emerging.",
                 tcFigCap: "Five health foundations that keep coming back in expert discussions",
                 tcFigAlt: "toClarity pyramid: long-term health at the top, monitoring of health signals in the middle, and five foundations at the base: nutrition, physical activity, sleep, stress and mental health, environment",
-                tcB1: "Structured synthesis across 100+ health voices",
-                tcB2: "Five health foundations: nutrition, physical activity, sleep, stress and mental health, environment",
-                tcB3: "Linked to body systems, health conditions and healthy ageing",
-                tcB4: "Under the hood: an AI pipeline from recordings to a structured knowledge base",
+                tcB1: "Understand what the scientific evidence says on topics that matter to you",
+                tcB2: "Find health questions worth looking into",
+                tcB3: "Recognise factors that may be affecting your health",
+                tcB4: "Prepare for a better-informed conversation with your doctor",
                 tcSoonTitle: "Under active development. Coming soon:",
                 tcS1: "A food intake monitor that calculates micronutrients",
                 tcS2: "Suggestions for people who care about a healthy lifestyle and are tired of the noise of unverified claims",
                 tcS3: "Podcasts that help you understand the topic more deeply",
                 tcCta: "Open toClarity.app",
-                tcNote: "A collaborative project. An information resource, not medical advice.",
-                ccKicker: "A guardian for the smart home, built for Home Assistant",
-                ccStatus: "In production at home",
-                ccOrigin: "Born out of the need for better control over my home, and the lack of a tool that offered it.",
-                ccDesc: "Your Home Assistant home starts speaking plain language: you know what you have, what works, what stopped working and why. No digging through logs, and no risk of anything changing on its own.",
-                ccB1: "<strong>Order in your devices.</strong> Every device gets a recognised role, and you confirm or correct it.",
-                ccB2: "<strong>Peace of mind about your heat pump.</strong> See how efficiently it runs and whether anything looks wrong.",
-                ccB3: "<strong>Full control.</strong> Nothing changes without your consent, and your data stays at home.",
-                ccSoonTitle: "A major upgrade is under way. Coming next:",
-                ccS1: "<strong>The cause, not just the symptom.</strong> When several devices fail at once, you get an explanation of what links them instead of a list of alerts.",
-                ccS2: "<strong>A true picture of your energy.</strong> Consumption, PV production and cost under your tariff, with a clear note whenever data is missing.",
-                ccS3: "<strong>Guidance instead of guesswork.</strong> Concrete recommendations with reasons, applied only when you agree to them.",
-                ccF1: "running in my home",
-                ccF2: "of decisions approved by a person",
-                ccF3: "data stays at home",
-                ccNote: "Private project, tested daily in my own home before it reaches anyone else.",
+                tcNote: "Developed in collaboration. An information resource, not medical advice.",
                 principlesTitle: "How I work",
                 p1h: "Data first, conclusions second",
                 p1t: "I check completeness and provenance before calculating anything. Measured, derived and estimated values are always labelled separately.",
