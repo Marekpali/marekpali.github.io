@@ -28,6 +28,10 @@
             --color-build: #8a5a00;
             --color-build-bg: #fbf1dc;
             --color-proto: #22598a;
+            --color-hook: #8a3d12;
+            --color-hook-bg: #fbe9dc;
+            --glow-a: rgba(194, 124, 14, 0.10);
+            --glow-b: rgba(14, 127, 166, 0.08);
             --color-proto-bg: #e3eef8;
         }
 
@@ -45,6 +49,10 @@
                 --color-build: #f0c36b;
                 --color-build-bg: #2b2210;
                 --color-proto: #9cc8f0;
+                --color-hook: #f3b58a;
+                --color-hook-bg: #2e1c10;
+                --glow-a: rgba(240, 195, 107, 0.08);
+                --glow-b: rgba(160, 199, 255, 0.07);
                 --color-proto-bg: #142536;
             }
         }
@@ -52,8 +60,12 @@
         html { scroll-behavior: smooth; }
 
         body {
+            background-image:
+                radial-gradient(700px 420px at 80% 160px, var(--glow-a), transparent 70%),
+                radial-gradient(560px 360px at 12% 40px, var(--glow-b), transparent 70%);
+            background-repeat: no-repeat;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: var(--color-bg);
+            background-color: var(--color-bg);
             color: var(--color-text);
             line-height: 1.6;
         }
@@ -68,6 +80,62 @@
             border-bottom: 1px solid var(--color-border);
             position: relative;
         }
+
+        .hook {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-hook);
+            background: var(--color-hook-bg);
+            border-radius: 999px;
+            padding: 6px 14px;
+            margin-bottom: 18px;
+        }
+
+        .proof {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 6px 0 22px;
+        }
+
+        .proof li { display: flex; flex-direction: column; gap: 2px; font-size: 12px; line-height: 1.35; color: var(--color-text-secondary); border-top: 2px solid var(--color-border); padding-top: 8px; }
+        .proof strong { font-size: 28px; font-weight: 700; color: var(--color-text); letter-spacing: -0.5px; line-height: 1.1; }
+
+        .discover {
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 20px;
+            background: var(--color-bg);
+            box-shadow: 0 18px 40px -24px rgba(20, 40, 60, 0.35);
+        }
+
+        .discover-title { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--color-text-secondary); margin-bottom: 14px; }
+        .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--color-live); box-shadow: 0 0 0 0 var(--color-live); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(30, 125, 79, 0.45); } 70% { box-shadow: 0 0 0 9px rgba(30, 125, 79, 0); } 100% { box-shadow: 0 0 0 0 rgba(30, 125, 79, 0); } }
+
+        .disc-stack { display: grid; }
+        .disc {
+            grid-area: 1 / 1;
+            border-left: 3px solid var(--tone);
+            background: var(--color-light-bg);
+            border-radius: 10px;
+            padding: 16px 18px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            visibility: hidden;
+        }
+        .disc.is-active { opacity: 1; transform: none; visibility: visible; }
+        .disc-tag { display: inline-block; font-size: 11px; font-weight: 600; color: var(--tone); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.6px; }
+        .disc strong { display: block; font-size: 18px; line-height: 1.3; margin-bottom: 8px; }
+        .disc p { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; }
+
+        .disc-dots { display: flex; gap: 6px; margin-top: 14px; }
+        .disc-dots button { width: 22px; height: 6px; border-radius: 3px; border: 0; padding: 0; background: var(--color-border); cursor: pointer; }
+        .disc-dots button[aria-selected="true"] { background: var(--color-accent); }
+        .disc-note { font-size: 11px; color: var(--color-text-secondary); margin-top: 10px; }
 
         .topbar {
             position: absolute;
@@ -136,11 +204,10 @@
 
         .header-content {
             display: grid;
-            grid-template-columns: 1fr;
-            max-width: 760px;
+            grid-template-columns: 1.25fr 0.95fr;
+            gap: 40px;
+            align-items: center;
         }
-
-        .header-content .value-links { grid-template-columns: 1fr 1fr; max-width: none; }
 
         h1 {
             font-size: 38px;
@@ -177,7 +244,8 @@
             transition: border-color 0.2s;
         }
 
-        .value-link:hover, .value-link:focus-visible { border-color: var(--color-accent); }
+        .value-link:hover, .value-link:focus-visible { border-color: var(--tone, var(--color-accent)); transform: translateY(-1px); }
+        .value-link { transition: border-color 0.2s, transform 0.2s; }
         .value-link .icon { font-size: 18px; width: 24px; text-align: center; flex-shrink: 0; }
         .value-link strong { display: block; font-size: 15px; }
         .value-link span.sub { display: block; font-size: 13px; color: var(--color-text-secondary); }
@@ -209,7 +277,7 @@
 
         .product .energy-caption { grid-column: 1 / -1; font-size: 12px; color: var(--color-text-secondary); text-align: center; }
 
-        .value-link svg { width: 22px; height: 22px; stroke: var(--color-accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+        .value-link svg { width: 34px; height: 34px; padding: 7px; border-radius: 50%; background: color-mix(in srgb, var(--tone, var(--color-accent)) 14%, transparent); stroke: var(--tone, var(--color-accent)); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 
         .benefit { font-size: 17px; font-weight: 600; line-height: 1.4; }
 
@@ -568,7 +636,7 @@
 
         @media (max-width: 768px) {
             .header-content { grid-template-columns: 1fr; gap: 28px; }
-            .header-content .value-links { grid-template-columns: 1fr; }
+            .header-content { grid-template-columns: 1fr; gap: 28px; }
             .contact-card { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
             .contact-card .profile-image { max-width: 140px; }
             .contact-qr { display: none; }
@@ -595,6 +663,7 @@
 
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
+            .pulse { animation: none; }
             * { transition: none !important; }
         }
     </style>
@@ -612,23 +681,41 @@
             </div>
 
             <div class="header-content">
-                <div>
+                <div class="hero-text">
+                    <p class="hook" data-i18n="hook">Rachunki rosną, a porady o zdrowiu sobie przeczą?</p>
                     <h1 data-i18n="headline">Odkrywam możliwości tam, gdzie inni widzą złożoność.</h1>
                     <p class="lead" data-i18n="lead">Wykorzystuję dane i technologię, aby odkrywać możliwości, które naprawdę mają znaczenie: od obniżania kosztów energii w domu po lepsze decyzje dotyczące zdrowia.</p>
                     <div class="value-links">
-                        <a class="value-link" href="#cognitive-core">
+                        <a class="value-link" href="#cognitive-core" style="--tone:#c27c0e">
                             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
                             <span><strong data-i18n="v1Title">Oszczędzaj na kosztach utrzymania domu</strong><span class="sub" data-i18n="v1Sub">Cognitive Core</span></span>
                             <span class="arrow" aria-hidden="true">↓</span>
                         </a>
-                        <a class="value-link" href="#toclarity">
+                        <a class="value-link" href="#toclarity" style="--tone:#1e7d4f">
                             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
                             <span><strong data-i18n="v2Title">Podejmuj lepsze decyzje dotyczące zdrowia</strong><span class="sub">toClarity</span></span>
                             <span class="arrow" aria-hidden="true">↓</span>
                         </a>
                     </div>
+                    <ul class="proof" aria-label="W liczbach">
+                        <li><strong>100+</strong><span data-i18n="pr1">ekspertów zdrowia w jednym miejscu</span></li>
+                        <li><strong>6</strong><span data-i18n="pr2">obszarów domu w jednym widoku</span></li>
+                        <li><strong>0</strong><span data-i18n="pr3">zmian bez Twojej zgody</span></li>
+                    </ul>
                     <a class="hero-contact" href="#contact" data-i18n="heroContact">Porozmawiajmy ↓</a>
                 </div>
+                <aside class="discover" aria-label="Przykłady odkryć" data-i18n-aria="discAria">
+                    <p class="discover-title"><span class="pulse" aria-hidden="true"></span><span data-i18n="discTitle">Co da się odkryć</span></p>
+                    <div class="disc-stack">
+                        <article class="disc is-active" style="--tone:#0e7fa6"><span class="disc-tag" data-i18n="dTagHome">Koszty domu</span><strong data-i18n="d1h">Mniej wody, a wyższy rachunek</strong><p data-i18n="d1t">Na fakturze rozliczono więcej ścieków niż w poprzednim okresie. Warto to sprawdzić, zanim zapłacisz.</p></article>
+                        <article class="disc" style="--tone:#1e7d4f"><span class="disc-tag" data-i18n="dTagHealth">Zdrowie</span><strong data-i18n="d2h">Eksperci się nie zgadzają? To też informacja</strong><p data-i18n="d2t">Zamiast jednej „prawdy” widzisz, gdzie opinie się rozchodzą i co dopiero się wyłania.</p></article>
+                        <article class="disc" style="--tone:#a8475f"><span class="disc-tag" data-i18n="dTagHome2">Koszty domu</span><strong data-i18n="d3h">Gaz kosztuje także przy zerowym zużyciu</strong><p data-i18n="d3t">Faktury z samymi opłatami stałymi pokazują, ile kosztuje samo utrzymanie przyłącza.</p></article>
+                        <article class="disc" style="--tone:#1e7d4f"><span class="disc-tag" data-i18n="dTagHealth2">Zdrowie</span><strong data-i18n="d4h">Pięć fundamentów, które wracają najczęściej</strong><p data-i18n="d4t">Odżywianie, ruch, sen, stres i środowisko: od nich zaczyna się większość rozmów ekspertów.</p></article>
+                        <article class="disc" style="--tone:#c27c0e"><span class="disc-tag" data-i18n="dTagHome3">Koszty domu</span><strong data-i18n="d5h">Czy pompa ciepła pracuje wydajnie?</strong><p data-i18n="d5t">Efektywność widać dzień po dniu, zamiast zgadywać po rachunku na koniec sezonu.</p></article>
+                    </div>
+                    <div class="disc-dots" role="tablist" aria-label="Przełącz przykład"></div>
+                    <p class="disc-note" data-i18n="discNote">Przykłady na danych przykładowych.</p>
+                </aside>
             </div>
         </header>
 
@@ -831,6 +918,25 @@
             en: {
                 headline: "I find opportunities where others see complexity.",
                 lead: "I use data and technology to uncover the opportunities that really matter: from lowering the cost of running a home to making better decisions about health.",
+                hook: "Bills keep rising and health advice keeps contradicting itself?",
+                pr1: "health experts in one place",
+                pr2: "areas of the home in one view",
+                pr3: "changes without your consent",
+                discTitle: "What you can discover",
+                discAria: "Example discoveries",
+                discNote: "Examples based on sample data.",
+                dTagHome: "Home costs", dTagHome2: "Home costs", dTagHome3: "Home costs",
+                dTagHealth: "Health", dTagHealth2: "Health",
+                d1h: "Less water, yet a higher bill",
+                d1t: "The invoice billed more sewage than in the previous period. Worth checking before you pay.",
+                d2h: "Experts disagree? That is information too",
+                d2t: "Instead of one 'truth' you see where opinions diverge and what is still emerging.",
+                d3h: "Gas costs money even at zero use",
+                d3t: "Invoices with fixed charges only show what just keeping the connection costs.",
+                d4h: "Five foundations that come up most often",
+                d4t: "Nutrition, movement, sleep, stress and environment: most expert discussions start there.",
+                d5h: "Is your heat pump running efficiently?",
+                d5t: "You see efficiency day by day instead of guessing from the end-of-season bill.",
                 heroContact: "Let's talk ↓",
                 contactTitle: "Let's talk",
                 contactLine: "If your data, systems or bills hide an opportunity that is not obvious at first glance, I would be glad to look for it.",
@@ -946,6 +1052,9 @@
         document.querySelectorAll('[data-i18n-alt]').forEach(el => {
             content.pl[el.dataset.i18nAlt] = el.alt;
         });
+        document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+            content.pl[el.dataset.i18nAria] = el.getAttribute('aria-label');
+        });
 
         function setLang(lang) {
             const c = content[lang] || content.pl;
@@ -956,6 +1065,10 @@
             document.querySelectorAll('[data-i18n-alt]').forEach(el => {
                 const value = c[el.dataset.i18nAlt];
                 if (value !== undefined) el.alt = value;
+            });
+            document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+                const value = c[el.dataset.i18nAria];
+                if (value !== undefined) el.setAttribute('aria-label', value);
             });
             document.documentElement.lang = lang;
             document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -1080,6 +1193,36 @@
             render();
             window.addEventListener('langchange', render);
             let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(render, 150); });
+        })();
+
+        // Rotating "what you can discover" cards in the hero.
+        (function () {
+            const cards = [...document.querySelectorAll('.disc')];
+            const dots = document.querySelector('.disc-dots');
+            if (!cards.length || !dots) return;
+            let i = 0, timer = null;
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            cards.forEach((_, k) => {
+                const b = document.createElement('button');
+                b.type = 'button'; b.setAttribute('role', 'tab');
+                b.setAttribute('aria-label', String(k + 1));
+                b.addEventListener('click', () => { show(k); restart(); });
+                dots.appendChild(b);
+            });
+            function show(k) {
+                i = k;
+                cards.forEach((c, n) => c.classList.toggle('is-active', n === k));
+                [...dots.children].forEach((d, n) => d.setAttribute('aria-selected', String(n === k)));
+            }
+            function restart() {
+                clearInterval(timer);
+                if (!reduce) timer = setInterval(() => show((i + 1) % cards.length), 4500);
+            }
+            const box = document.querySelector('.discover');
+            box.addEventListener('mouseenter', () => clearInterval(timer));
+            box.addEventListener('mouseleave', restart);
+            box.addEventListener('focusin', () => clearInterval(timer));
+            show(0); restart();
         })();
     </script>
 </body>
