@@ -69,10 +69,49 @@
             position: relative;
         }
 
-        .lang-toggle {
+        .topbar {
             position: absolute;
             top: 20px;
             right: 0;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            font-size: 13px;
+        }
+
+        .top-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+        }
+
+        .top-email:hover, .top-email:focus-visible { color: var(--color-accent); }
+        .top-email svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+        .hero-contact { display: inline-block; font-size: 14px; font-weight: 600; color: var(--color-accent); text-decoration: none; }
+        .hero-contact:hover { text-decoration: underline; }
+
+        .contact-card {
+            display: grid;
+            grid-template-columns: 200px 1fr auto;
+            gap: 32px;
+            align-items: center;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 28px;
+        }
+
+        .contact-card .profile-image { max-width: 200px; justify-self: start; }
+        .contact-name { font-size: 24px; font-weight: 650; letter-spacing: -0.3px; margin-bottom: 8px; }
+        .contact-line { font-size: 15px; margin-bottom: 16px; max-width: 460px; }
+        .contact-main .meta { margin-bottom: 18px; }
+        .contact-qr { text-align: center; }
+        .contact-qr img { display: block; width: 132px; height: 132px; border-radius: 8px; border: 1px solid var(--color-border); background: #fff; padding: 6px; }
+        .contact-qr figcaption { font-size: 12px; color: var(--color-text-secondary); margin-top: 8px; max-width: 132px; }
+
+        .lang-toggle {
             display: flex;
             gap: 10px;
             font-size: 13px;
@@ -97,10 +136,11 @@
 
         .header-content {
             display: grid;
-            grid-template-columns: 1.3fr 1fr;
-            gap: 48px;
-            align-items: center;
+            grid-template-columns: 1fr;
+            max-width: 760px;
         }
+
+        .header-content .value-links { grid-template-columns: 1fr 1fr; max-width: none; }
 
         h1 {
             font-size: 38px;
@@ -528,17 +568,21 @@
 
         @media (max-width: 768px) {
             .header-content { grid-template-columns: 1fr; gap: 28px; }
-            .profile-image { max-width: 120px; justify-self: start; order: -1; }
+            .header-content .value-links { grid-template-columns: 1fr; }
+            .contact-card { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
+            .contact-card .profile-image { max-width: 140px; }
+            .contact-qr { display: none; }
+            .topbar { position: static; justify-content: space-between; margin-bottom: 28px; }
             h1 { font-size: 30px; }
             .collab-grid, .principles { grid-template-columns: 1fr; }
-            header { padding: 56px 0 40px; }
+            header { padding: 20px 0 40px; }
             main { padding: 56px 0 16px; }
             section { margin-bottom: 64px; }
         }
 
         @media (max-width: 480px) {
             .container { padding: 0 16px; }
-            .lang-toggle { top: 16px; }
+            .top-email span { display: none; }
             h1 { font-size: 26px; }
             .tagline { font-size: 15px; }
             .product { padding: 22px; }
@@ -558,15 +602,17 @@
 <body>
     <div class="container">
         <header>
-            <div class="lang-toggle" role="group" aria-label="Język / Language">
+            <div class="topbar">
+                <a class="top-email" href="mailto:marek.palichleb@gmail.com" aria-label="Email: marek.palichleb@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>marek.palichleb@gmail.com</span></a>
+                <div class="lang-toggle" role="group" aria-label="Język / Language">
                 <button class="lang-btn" type="button" data-lang="pl" aria-pressed="true">PL</button>
                 <span aria-hidden="true">/</span>
                 <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+                </div>
             </div>
 
             <div class="header-content">
                 <div>
-                    <p class="eyebrow">Marek Palichleb</p>
                     <h1 data-i18n="headline">Odkrywam możliwości tam, gdzie inni widzą złożoność.</h1>
                     <p class="lead" data-i18n="lead">Wykorzystuję dane i technologię, aby odkrywać możliwości, które naprawdę mają znaczenie: od obniżania kosztów energii w domu po lepsze decyzje dotyczące zdrowia.</p>
                     <div class="value-links">
@@ -581,16 +627,8 @@
                             <span class="arrow" aria-hidden="true">↓</span>
                         </a>
                     </div>
-                    <div class="meta">
-                        <span data-i18n="location">Polska, praca w całej UE</span>
-                        <span data-i18n="status">Dostępny do projektów</span>
-                    </div>
-                    <div class="cta-buttons">
-                        <a href="https://linkedin.com/in/palichlebm/" target="_blank" rel="noopener" class="btn btn-primary"><span aria-hidden="true">→</span><span>LinkedIn</span></a>
-                        <a href="mailto:marek.palichleb@gmail.com" class="btn"><span aria-hidden="true">✉</span><span>Email</span></a>
-                    </div>
+                    <a class="hero-contact" href="#contact" data-i18n="heroContact">Porozmawiajmy ↓</a>
                 </div>
-                <img src="profile.jpg" alt="Marek Palichleb" class="profile-image" width="340" height="340">
             </div>
         </header>
 
@@ -760,6 +798,29 @@
                     </div>
                 </div>
             </section>
+
+            <section id="contact" class="contact" aria-labelledby="contact-title">
+                <div class="section-header"><h2 id="contact-title" data-i18n="contactTitle">Porozmawiajmy</h2></div>
+                <div class="contact-card">
+                    <img src="profile.jpg" alt="Marek Palichleb" class="profile-image" width="200" height="200" loading="lazy">
+                    <div class="contact-main">
+                        <p class="contact-name">Marek Palichleb</p>
+                        <p class="contact-line" data-i18n="contactLine">Jeśli w Twoich danych, systemach albo rachunkach kryje się możliwość, której nie widać na pierwszy rzut oka, chętnie jej poszukam.</p>
+                        <div class="meta">
+                            <span data-i18n="location">Polska, praca w całej UE</span>
+                            <span data-i18n="status">Dostępny do projektów</span>
+                        </div>
+                        <div class="cta-buttons">
+                            <a href="https://linkedin.com/in/palichlebm/" target="_blank" rel="noopener" class="btn btn-primary"><span aria-hidden="true">→</span><span data-i18n="ctaLinkedin">Połącz się na LinkedIn</span></a>
+                            <a href="mailto:marek.palichleb@gmail.com" class="btn"><span aria-hidden="true">✉</span><span data-i18n="ctaEmail">Napisz email</span></a>
+                        </div>
+                    </div>
+                    <figure class="contact-qr">
+                        <img src="contact-qr.svg" width="132" height="132" alt="Kod QR z wizytówką: Marek Palichleb, email i LinkedIn" data-i18n-alt="qrAlt">
+                        <figcaption data-i18n="qrCap">Zeskanuj, aby zapisać kontakt</figcaption>
+                    </figure>
+                </div>
+            </section>
         </main>
 
         <footer data-i18n="footer">© 2026 Marek Palichleb. Chętnie porozmawiam o systemach, danych i możliwościach.</footer>
@@ -770,6 +831,13 @@
             en: {
                 headline: "I find opportunities where others see complexity.",
                 lead: "I use data and technology to uncover the opportunities that really matter: from lowering the cost of running a home to making better decisions about health.",
+                heroContact: "Let's talk ↓",
+                contactTitle: "Let's talk",
+                contactLine: "If your data, systems or bills hide an opportunity that is not obvious at first glance, I would be glad to look for it.",
+                ctaLinkedin: "Connect on LinkedIn",
+                ctaEmail: "Send an email",
+                qrCap: "Scan to save the contact",
+                qrAlt: "QR code with a contact card: Marek Palichleb, email and LinkedIn",
                 v1Title: "Save on the cost of running your home",
                 v1Sub: "Cognitive Core",
                 v2Title: "Make better-informed decisions about your health",
